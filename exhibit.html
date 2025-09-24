@@ -268,7 +268,6 @@
         <div class="tabs">
           <button class="tab-button active" onclick="openTab(event, 'Overview')">Overview</button>
           <button class="tab-button" onclick="openTab(event, 'History')">History</button>
-          <button class="tab-button" onclick="openTab(event, 'Architecture')">Architecture</button>
           <button class="tab-button" onclick="openTab(event, 'Gallery')">Gallery</button>
         </div>
         <div id="Overview" class="tab-content active">
@@ -279,9 +278,6 @@
         </div>
         <div id="History" class="tab-content">
           <p id="history-text"></p>
-        </div>
-        <div id="Architecture" class="tab-content">
-          <p id="architecture-text"></p>
         </div>
       </div>
 
@@ -323,9 +319,8 @@
           title: 'Konark Sun Temple',
           location: 'Konark, Odisha, India',
           imageUrl: 'https://images.unsplash.com/photo-1594481373014-92595655b3a3?q=80&w=2070&auto=format&fit=crop',
-          overview: 'The Konark Sun Temple is a 13th-century CE monument at Konark, Odisha. Shaped like a colossal chariot, it is dedicated to the Hindu sun god, Surya. Its geometry, iconography, and intricate carvings represent a pinnacle of Kalinga architecture. ',
+          overview: 'An architectural marvel, the Konark Sun Temple is a monumental representation of the sun god Surya\'s chariot. Its 24 intricately carved stone wheels are not just decorative but also serve as sundials, and it is led by a team of seven sculpted horses. The temple is a masterpiece of Odishan architecture and a testament to the artistic and engineering genius of its time.',
           history: 'Attributed to king Narasimhadeva I of the Eastern Ganga dynasty, the temple was built around 1250 CE. European sailors once called it the "Black Pagoda" as it served as a crucial landmark for ships in the Bay of Bengal.',
-          architecture: 'The temple complex is designed as a 100-foot high chariot with immense wheels and horses, all carved from stone. The 24 wheels are decorated with symbolic motifs and serve as sundials that can accurately tell time.',
           galleryImages: [
             'https://images.unsplash.com/photo-1617364292277-a0fab5bb11a3?q=80&w=2070&auto=format&fit=crop',
             'https://images.unsplash.com/photo-1582112526937-65664075a464?q=80&w=2070&auto=format=fit=crop',
@@ -341,9 +336,8 @@
           title: 'Jagannath Temple, Puri',
           location: 'Puri, Odisha, India',
           imageUrl: 'https://images.unsplash.com/photo-1628269215524-a017502bac7a?q=80&w=2070&auto=format&fit=crop',
-          overview: 'The Shree Jagannath Temple is an important Hindu temple dedicated to Jagannath, a form of Vishnu. It is one of the Char Dham pilgrimage sites.',
+          overview: 'One of the four great \'Char Dham\' pilgrimage sites, the Jagannath Temple in Puri is a sacred Hindu temple dedicated to Lord Jagannath. The temple is famous for its annual Ratha Yatra, or chariot festival, which attracts millions of devotees from around the world. Its massive complex is a stunning example of Kalinga architecture.',
           history: 'The present temple was rebuilt from the 10th century onwards, on the site of an earlier temple, and begun by King Anantavarman Chodaganga Deva.',
-          architecture: 'The temple is a classic example of Kalinga architecture, with its towering main shikhara and surrounding structures.',
           galleryImages: [], modelUrl: 'media/gltf/space/space.gltf',
           quizTitle: 'Kalinga Quiz: Puri', botTitle: 'Ask Utkal (AI Guide)', quizDescription: 'Test your knowledge of this sacred site.', botDescription: 'Your guide to Odishan culture.', exploreTitle: 'Explore More of Odisha'
         },
@@ -351,9 +345,8 @@
           title: 'Udayagiri & Khandagiri Caves',
           location: 'Bhubaneswar, Odisha, India',
           imageUrl: 'https://images.unsplash.com/photo-1600691399338-359b3593ff0d?q=80&w=2070&auto=format&fit=crop',
-          overview: 'The Udayagiri and Khandagiri Caves are partly natural and partly artificial caves of archaeological, historical and religious importance.',
+          overview: 'The twin hills of Udayagiri and Khandagiri are home to a series of finely and ornately carved caves. These caves, with their rock-cut shelters, are believed to be one of India\'s earliest Jain rock-cut monasteries. The inscriptions and carvings provide a unique window into the ancient history of the region.',
           history: 'The caves are situated on two adjacent hills and are believed to have been carved out as residential blocks for Jain monks during the reign of King Kharavela.',
-          architecture: 'Many of the caves feature ornate carvings, with Udayagiri having 18 caves and Khandagiri having 15.',
           galleryImages: [], modelUrl: 'media/gltf/space/space.gltf',
           quizTitle: 'Kalinga Quiz: Caves', botTitle: 'Ask Utkal (AI Guide)', quizDescription: 'Test your knowledge of these ancient caves.', botDescription: 'Your guide to Odishan culture.', exploreTitle: 'Explore More of Odisha'
         },
@@ -361,9 +354,8 @@
           title: 'Dhauli Shanti Stupa',
           location: 'Bhubaneswar, Odisha, India',
           imageUrl: 'https://images.unsplash.com/photo-1587899765383-b35a4d4f5592?q=80&w=2070&auto=format&fit=crop',
-          overview: 'Dhauli hill is presumed to be the area where the Kalinga War was fought. The Shanti Stupa, or Peace Pagoda, was built here by the Japan Buddha Sangha in the 1970s.',
+          overview: 'Perched atop Dhauli hill, the gleaming white Shanti Stupa (Peace Pagoda) is a symbol of peace and the end of war. It was built on the site of the historic Kalinga War, which led Emperor Ashoka to renounce violence and embrace Buddhism. The monument offers panoramic views of the surrounding plains and the Daya River.',
           history: 'It is here that Emperor Ashoka, filled with remorse after the Kalinga War, renounced violence and embraced Buddhism.',
-          architecture: 'The stupa is a dome-shaped structure with stone panels bearing Buddha images and a series of rock edicts from Ashoka.',
           galleryImages: [], modelUrl: 'media/gltf/space/space.gltf',
           quizTitle: 'Kalinga Quiz: Dhauli', botTitle: 'Ask Utkal (AI Guide)', quizDescription: 'Test your knowledge of this historic site.', botDescription: 'Your guide to Odishan culture.', exploreTitle: 'Explore More of Odisha'
         },
@@ -421,7 +413,6 @@
           document.getElementById('site-location').textContent = data.location;
           document.getElementById('overview-text').textContent = data.overview;
           document.getElementById('history-text').textContent = data.history;
-          document.getElementById('architecture-text').textContent = data.architecture;
           document.getElementById('quiz-title').textContent = data.quizTitle;
           document.getElementById('quiz-description').textContent = data.quizDescription;
           document.getElementById('bot-title').textContent = data.botTitle;
