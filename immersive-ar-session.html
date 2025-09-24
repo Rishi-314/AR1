@@ -70,11 +70,16 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       let gl = null;
       let renderer = null;
       let scene = new Scene();
-      let solarSystem = new Gltf2Node({url: 'media/gltf/space/space.gltf'});
-      // The solar system is big (citation needed). Scale it down so that users
-      // can move around the planets more easily.
-      solarSystem.scale = [0.1, 0.1, 0.1];
-      scene.addNode(solarSystem);
+
+      // Get the model URL from the query string.
+      // Fallback to a default model if no parameter is specified.
+      const urlParams = new URLSearchParams(window.location.search);
+      const modelUrl = urlParams.get('model') || 'media/gltf/space/space.gltf';
+
+      let model = new Gltf2Node({url: modelUrl});
+      // Scale the model down for easier viewing in AR.
+      model.scale = [0.1, 0.1, 0.1];
+      scene.addNode(model);
       // Still adding a skybox, but only for the benefit of the inline view.
       let skybox = new SkyboxNode({url: 'media/textures/milky-way-4k.png'});
       scene.addNode(skybox);

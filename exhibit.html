@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='chrome=1'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Sanskriti Darpan - Exhibit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        /* Official Government Theme - Strict Adherence */
+        --background-color: #F5F5DC;   /* Khadi Off-White */
+        --text-color: #212121;         /* Official Grey */
+        --accent-color: #FF9933;         /* Deep Saffron */
+        --header-color: #000080;         /* Ashoka Navy Blue */
+        --success-color: #138808;        /* India Green */
+        --loader-color: var(--accent-color);
+      }
+      body {
+        background-color: var(--background-color);
+        color: var(--text-color);
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 960px;
+        width: calc(100% - 4em);
+        margin: 2em auto;
+        padding: 2em;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+      }
+      .hero-image {
+        width: 100%;
+        height: 400px;
+        background-size: cover;
+        background-position: center;
+        border-radius: 8px;
+        margin-bottom: 2em;
+      }
+      .title-section { text-align: center; margin-bottom: 2em; }
+      .title-section h1 {
+        font-family: 'Roboto', sans-serif;
+        font-size: 4em;
+        margin: 0;
+        font-weight: 700;
+      }
+      .title-section h2 { font-size: 1.2em; margin: 0; font-weight: 400; color: #6c757d; }
+      .cta-container { text-align: center; margin: 3em 0; }
+      .cta-button {
+        background-color: var(--accent-color);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        padding: 20px 40px;
+        font-size: 1.2em;
+        font-weight: bold;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(255, 153, 51, 0.3);
+      }
+      .cta-button:hover {
+        background-color: #e68a2e; /* Darker Saffron */
+        box-shadow: 0 6px 20px rgba(255, 153, 51, 0.5);
+        transform: translateY(-2px);
+      }
+      .tabs { display: flex; border-bottom: 1px solid #dee2e6; margin-bottom: 1.5em; }
+      .tab-button {
+        padding: 1em 1.5em;
+        cursor: pointer;
+        border: none;
+        background: none;
+        font-size: 1em;
+        color: var(--text-color);
+        border-bottom: 3px solid transparent;
+        margin-bottom: -1px;
+        transition: all 0.3s ease;
+      }
+      .tab-button.active { color: var(--accent-color); border-bottom-color: var(--accent-color); font-weight: bold; }
+      .tab-button:hover:not(.active) {
+        color: var(--accent-color);
+        background-color: #f0f0f0;
+      }
+      .tab-content { display: none; line-height: 1.7; }
+      .tab-content.active { display: block; }
+      .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1em; }
+      .gallery img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 4px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+      }
+      .gallery img:hover { transform: scale(1.05); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
+      .back-link { display: inline-block; margin-top: 2em; color: var(--accent-color); text-decoration: none; font-weight: bold; transition: color 0.3s; }
+      .back-link:hover { color: var(--text-color); }
+      .feature-card h3 { font-family: 'Roboto', sans-serif; }
+
+      /* Advanced Features Section */
+      .advanced-features {
+        margin: 4em 0;
+        padding: 2em 0;
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2em;
+        align-items: stretch;
+      }
+      .feature-card {
+        background-color: var(--background-color);
+        padding: 1.5em;
+        border-radius: 8px;
+        text-align: center;
+        border: 1px solid #e0e0e0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .feature-card h3 {
+        margin-top: 0;
+        font-size: 1.5em;
+        color: var(--header-color);
+      }
+      .feature-card p {
+        color: #6c757d;
+        margin-bottom: 1.5em;
+      }
+      .feature-card .cta-button {
+        padding: 15px 30px;
+        font-size: 1em;
+      }
+
+      /* Explore More Section */
+      .explore-more-section {
+        margin-top: 4em;
+        padding-top: 2em;
+        border-top: 1px solid #eee;
+      }
+      .explore-more-section h2 {
+        text-align: center;
+        font-weight: 400;
+        margin-bottom: 1.5em;
+      }
+      .carousel {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: 280px;
+        gap: 1em;
+        overflow-x: auto;
+        padding-bottom: 1em;
+      }
+      .carousel-card {
+        background: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        text-decoration: none;
+        color: var(--text-color);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .carousel-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      }
+      .carousel-card img { width: 100%; height: 150px; object-fit: cover; }
+      .carousel-card p { padding: 1em; margin: 0; text-align: center; font-weight: bold;
+      }
+
+      /* Header and Footer */
+      .app-header {
+        background-color: var(--header-color);
+        color: #fff;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      }
+      .app-header a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.5em;
+        margin-right: 15px;
+      }
+      .app-header .header-title { font-weight: 700; }
+
+      /* Loader Styles */
+      .loader-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--background-color);
+        z-index: 9999;
+        transition: opacity 0.5s ease;
+      }
+      .loader {
+        border: 5px solid #f3f3f3;
+        border-top: 5px solid var(--loader-color);
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      /* Lightbox Styles */
+      .lightbox {
+        display: none;
+        position: fixed;
+        z-index: 10000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        justify-content: center;
+        align-items: center;
+      }
+      .lightbox-content {
+        max-width: 90%;
+        max-height: 80%;
+      }
+      .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="index.html" aria-label="Back to gallery">‹</a>
+      <div class="header-title">Sanskriti Darpan</div>
+    </header>
+
+    <div class="loader-wrapper" id="loader-wrapper">
+      <div class="loader"></div>
+    </div>
+
+    <div class="container" id="exhibit-container" style="display:none;">
+      <div id="hero-image" class="hero-image"></div>
+      <div class="title-section">
+        <h1 id="site-title"></h1>
+        <h2 id="site-location"></h2>
+      </div>
+
+      <div class="info-section">
+        <div class="tabs">
+          <button class="tab-button active" onclick="openTab(event, 'Overview')">Overview</button>
+          <button class="tab-button" onclick="openTab(event, 'History')">History</button>
+          <button class="tab-button" onclick="openTab(event, 'Architecture')">Architecture</button>
+          <button class="tab-button" onclick="openTab(event, 'Gallery')">Gallery</button>
+        </div>
+        <div id="Overview" class="tab-content active">
+          <p id="overview-text"></p>
+        </div>
+        <div id="Gallery" class="tab-content">
+          <div id="gallery-grid" class="gallery"></div>
+        </div>
+        <div id="History" class="tab-content">
+          <p id="history-text"></p>
+        </div>
+        <div id="Architecture" class="tab-content">
+          <p id="architecture-text"></p>
+        </div>
+      </div>
+
+      <div class="cta-container">
+        <a id="ar-button" href="#" class="cta-button">Activate AR Darshan</a>
+      </div>
+
+      <div class="advanced-features">
+        <div class="feature-card">
+          <h3 id="quiz-title"></h3>
+          <p id="quiz-description"></p>
+          <a href="#" class="cta-button">Start Quiz</a>
+        </div>
+        <div class="feature-card">
+          <h3 id="bot-title"></h3>
+          <p id="bot-description"></p>
+          <a href="#" class="cta-button">Chat Now</a>
+        </div>
+      </div>
+
+      <div class="explore-more-section" id="explore-more-section">
+        <h2 id="explore-title"></h2>
+        <div class="carousel" id="explore-carousel"></div>
+      </div>
+
+      <div style="text-align: center;">
+        <a href="index.html" class="back-link">‹ Back to Gallery</a>
+      </div>
+    </div>
+
+    <div id="lightbox" class="lightbox">
+      <span class="lightbox-close" id="lightbox-close">&times;</span>
+      <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <script>
+      const exhibitData = {
+        'konark-sun-temple': {
+          title: 'Konark Sun Temple',
+          location: 'Konark, Odisha, India',
+          imageUrl: 'https://images.unsplash.com/photo-1594481373014-92595655b3a3?q=80&w=2070&auto=format&fit=crop',
+          overview: 'The Konark Sun Temple is a 13th-century CE monument at Konark, Odisha. Shaped like a colossal chariot, it is dedicated to the Hindu sun god, Surya. Its geometry, iconography, and intricate carvings represent a pinnacle of Kalinga architecture. ',
+          history: 'Attributed to king Narasimhadeva I of the Eastern Ganga dynasty, the temple was built around 1250 CE. European sailors once called it the "Black Pagoda" as it served as a crucial landmark for ships in the Bay of Bengal.',
+          architecture: 'The temple complex is designed as a 100-foot high chariot with immense wheels and horses, all carved from stone. The 24 wheels are decorated with symbolic motifs and serve as sundials that can accurately tell time.',
+          galleryImages: [
+            'https://images.unsplash.com/photo-1617364292277-a0fab5bb11a3?q=80&w=2070&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1582112526937-65664075a464?q=80&w=2070&auto=format=fit=crop',
+          ],
+          modelUrl: 'media/gltf/space/space.gltf', // Placeholder model
+          quizTitle: 'Kalinga Quiz: Konark',
+          quizDescription: 'Explore the legends and architecture of this Kalinga marvel.',
+          botTitle: 'Ask Utkal (AI Guide)',
+          botDescription: 'Your personal guide for instant answers on Odishan history and culture.',
+          exploreTitle: 'Explore More of Odisha'
+        },
+        'jagannath-temple': {
+          title: 'Jagannath Temple, Puri',
+          location: 'Puri, Odisha, India',
+          imageUrl: 'https://images.unsplash.com/photo-1628269215524-a017502bac7a?q=80&w=2070&auto=format&fit=crop',
+          overview: 'The Shree Jagannath Temple is an important Hindu temple dedicated to Jagannath, a form of Vishnu. It is one of the Char Dham pilgrimage sites.',
+          history: 'The present temple was rebuilt from the 10th century onwards, on the site of an earlier temple, and begun by King Anantavarman Chodaganga Deva.',
+          architecture: 'The temple is a classic example of Kalinga architecture, with its towering main shikhara and surrounding structures.',
+          galleryImages: [], modelUrl: 'media/gltf/space/space.gltf',
+          quizTitle: 'Kalinga Quiz: Puri', botTitle: 'Ask Utkal (AI Guide)', quizDescription: 'Test your knowledge of this sacred site.', botDescription: 'Your guide to Odishan culture.', exploreTitle: 'Explore More of Odisha'
+        },
+        'udayagiri-caves': {
+          title: 'Udayagiri & Khandagiri Caves',
+          location: 'Bhubaneswar, Odisha, India',
+          imageUrl: 'https://images.unsplash.com/photo-1600691399338-359b3593ff0d?q=80&w=2070&auto=format&fit=crop',
+          overview: 'The Udayagiri and Khandagiri Caves are partly natural and partly artificial caves of archaeological, historical and religious importance.',
+          history: 'The caves are situated on two adjacent hills and are believed to have been carved out as residential blocks for Jain monks during the reign of King Kharavela.',
+          architecture: 'Many of the caves feature ornate carvings, with Udayagiri having 18 caves and Khandagiri having 15.',
+          galleryImages: [], modelUrl: 'media/gltf/space/space.gltf',
+          quizTitle: 'Kalinga Quiz: Caves', botTitle: 'Ask Utkal (AI Guide)', quizDescription: 'Test your knowledge of these ancient caves.', botDescription: 'Your guide to Odishan culture.', exploreTitle: 'Explore More of Odisha'
+        },
+        'dhauli-stupa': {
+          title: 'Dhauli Shanti Stupa',
+          location: 'Bhubaneswar, Odisha, India',
+          imageUrl: 'https://images.unsplash.com/photo-1587899765383-b35a4d4f5592?q=80&w=2070&auto=format&fit=crop',
+          overview: 'Dhauli hill is presumed to be the area where the Kalinga War was fought. The Shanti Stupa, or Peace Pagoda, was built here by the Japan Buddha Sangha in the 1970s.',
+          history: 'It is here that Emperor Ashoka, filled with remorse after the Kalinga War, renounced violence and embraced Buddhism.',
+          architecture: 'The stupa is a dome-shaped structure with stone panels bearing Buddha images and a series of rock edicts from Ashoka.',
+          galleryImages: [], modelUrl: 'media/gltf/space/space.gltf',
+          quizTitle: 'Kalinga Quiz: Dhauli', botTitle: 'Ask Utkal (AI Guide)', quizDescription: 'Test your knowledge of this historic site.', botDescription: 'Your guide to Odishan culture.', exploreTitle: 'Explore More of Odisha'
+        },
+      };
+
+      function openTab(evt, tabName) {
+        const tabcontent = document.getElementsByClassName("tab-content");
+        for (let i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].classList.remove("active");
+        }
+        const tablinks = document.getElementsByClassName("tab-button");
+        for (let i = 0; i < tablinks.length; i++) {
+          tablinks[i].classList.remove("active");
+        }
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+      }
+
+      function initLightbox() {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const closeBtn = document.getElementById('lightbox-close');
+        const galleryImages = document.querySelectorAll('#gallery-grid img');
+
+        galleryImages.forEach(img => {
+          img.addEventListener('click', () => {
+            lightbox.style.display = 'flex';
+            lightboxImg.src = img.src;
+          });
+        });
+
+        const closeLightbox = () => {
+          lightbox.style.display = 'none';
+        };
+
+        closeBtn.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => {
+          if (e.target === lightbox) {
+            closeLightbox();
+          }
+        });
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const params = new URLSearchParams(window.location.search);
+        const siteId = params.get('site');
+        const data = exhibitData[siteId];
+        const loader = document.getElementById('loader-wrapper');
+        const container = document.getElementById('exhibit-container');
+
+        if (data) {
+          container.style.display = 'block';
+          document.getElementById('hero-image').style.backgroundImage = `url('${data.imageUrl}')`;
+          document.getElementById('site-title').textContent = data.title;
+          document.getElementById('site-location').textContent = data.location;
+          document.getElementById('overview-text').textContent = data.overview;
+          document.getElementById('history-text').textContent = data.history;
+          document.getElementById('architecture-text').textContent = data.architecture;
+          document.getElementById('quiz-title').textContent = data.quizTitle;
+          document.getElementById('quiz-description').textContent = data.quizDescription;
+          document.getElementById('bot-title').textContent = data.botTitle;
+          document.getElementById('bot-description').textContent = data.botDescription;
+          document.getElementById('ar-button').href = `immersive-ar-session.html?model=${data.modelUrl}`;
+          document.getElementById('explore-title').textContent = data.exploreTitle;
+
+          const galleryGrid = document.getElementById('gallery-grid');
+          data.galleryImages.forEach(imgUrl => {
+            const img = document.createElement('img');
+            img.src = imgUrl;
+            galleryGrid.appendChild(img);
+          });
+
+          const carousel = document.getElementById('explore-carousel');
+          Object.keys(exhibitData).filter(key => key !== siteId).forEach(key => {
+            const otherExhibit = exhibitData[key];
+            const card = document.createElement('a');
+            card.href = `exhibit.html?site=${key}`;
+            card.className = 'carousel-card';
+            card.innerHTML = `<img src="${otherExhibit.imageUrl}" alt="${otherExhibit.title}"><p>${otherExhibit.title}</p>`;
+            carousel.appendChild(card);
+          });
+
+          initLightbox();
+        } else {
+          document.body.innerHTML = '<h1>Exhibit not found</h1><a href="index.html">Back to gallery</a>';
+        }
+
+        loader.style.opacity = '0';
+        container.style.opacity = '1';
+        setTimeout(() => loader.style.display = 'none', 500);
+      });
+    </script>
+  </body>
+</html>
+
+```
+
+### 3. Modify `immersive-ar-session.html`
+
+Finally, I'll update the AR session page to load the 3D model specified in the URL, making it a reusable component for any exhibit.
+
+```diff
