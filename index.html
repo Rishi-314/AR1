@@ -17,6 +17,9 @@
     <link rel='stylesheet' href='css/stylesheet.css'>
     <link rel='stylesheet' href='css/pygment_trac.css'>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
       article {
         position: relative;
@@ -74,8 +77,300 @@
         font-size: 0.8em;
       }
 
+      /* New Museum Theme Styles */
+      :root {
+        --background-color: #F5F5DC; /* Khadi Off-White */
+        --text-color: #212121; /* Official Grey */
+        --accent-color: #FF9933; /* Deep Saffron */
+        --header-color: #000080; /* Ashoka Navy Blue */
+      }
+
+      body {
+        background-color: var(--background-color);
+        color: var(--text-color);
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .app-header {
+        background-color: var(--header-color);
+        color: #fff;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      }
+
+      .app-header .emblem {
+        height: 40px;
+        margin-right: 15px;
+      }
+
+      .app-header .header-title {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 700;
+        font-size: 1.2em;
+      }
+
+      .app-header .header-title .hindi {
+        font-family: 'Tiro Devanagari Sanskrit', serif;
+        font-size: 0.9em;
+        opacity: 0.9;
+        display: block;
+      }
+
+      .app-header .header-actions {
+        margin-left: auto;
+        /* Placeholder for language/accessibility icons */
+      }
+
+      .hero-image {
+        width: 100%;
+        height: 400px;
+        /* A stunning, high-quality photograph of Machu Picchu at sunrise. */
+        background-image: url('https://images.unsplash.com/photo-1526749837599-b412b1d1c54f?q=80&w=2070&auto=format&fit=crop');
+        background-size: cover;
+        background-position: center;
+        border-radius: 8px;
+        margin-bottom: 2em;
+      }
+
+      .title-section {
+        text-align: center;
+        margin: 2em 0 1em 0;
+      }
+
+      .title-section h1 {
+        font-family: 'Roboto', sans-serif;
+        font-size: 4em;
+        margin: 0;
+        font-weight: 700;
+      }
+
+      .title-section h1::after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 2px;
+        background: var(--accent-color);
+        margin: 0.4em auto 0.5em;
+      }
+
+      .title-section h2 {
+        font-family: 'Tiro Devanagari Sanskrit', serif;
+        font-size: 1.2em;
+        margin: 0;
+        font-weight: 400;
+        color: #6c757d;
+      }
+
+      .description {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 3em auto;
+        font-size: 1.1em;
+        line-height: 1.6;
+      }
+
+      .cta-container {
+        text-align: center;
+        margin-bottom: 3em;
+      }
+
+      .cta-button {
+        background-color: var(--accent-color);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        padding: 20px 40px;
+        font-size: 1.2em;
+        font-weight: bold;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        display: inline-block;
+      }
+
+      .cta-button:hover {
+        background-color: #e68a2e; /* Darker Saffron */
+      }
+
+      .tabs {
+        display: flex;
+        border-bottom: 1px solid #dee2e6;
+        margin-bottom: 1.5em;
+      }
+
+      .tab-button {
+        padding: 1em 1.5em;
+        cursor: pointer;
+        border: none;
+        background: none;
+        font-size: 1em;
+        color: var(--text-color);
+        border-bottom: 3px solid transparent;
+        margin-bottom: -1px; /* Overlap the container's border */
+      }
+
+      .tab-button.active {
+        color: var(--accent-color);
+        border-bottom-color: var(--accent-color);
+        font-weight: bold;
+      }
+
+      .tab-content {
+        display: none;
+        line-height: 1.7;
+      }
+
+      .tab-content.active {
+        display: block;
+      }
+
+      /* New Gallery Styles */
+      .gallery-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        align-items: stretch;
+        gap: 2em;
+        padding: 2em 0;
+      }
+
+      .exhibit-card {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        animation: fadeInUp 0.5s ease-out forwards;
+        opacity: 0; /* Start hidden for animation */
+      }
+
+      .exhibit-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+      }
+
+      .exhibit-card .card-image {
+        width: 100%;
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .exhibit-card:hover .card-image {
+        transform: scale(1.05);
+      }
+
+      .exhibit-card .card-image::after {
+        content: '→';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.8);
+        font-size: 4em;
+        color: white;
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+
+      .exhibit-card .card-content {
+        padding: 1.5em;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .exhibit-card:hover .card-image::after {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+
+      .exhibit-card .card-content h3 {
+        margin: 0 0 0.5em 0;
+        font-size: 1.5em;
+        font-weight: 700;
+        color: var(--text-color);
+      }
+
+      .exhibit-card .card-content p {
+        margin: 0 0 1.5em 0;
+        flex-grow: 1;
+        line-height: 1.6;
+        color: #6c757d;
+        /* Truncate text to 3 lines */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+               line-clamp: 3; 
+        -webkit-box-orient: vertical;
+      }
+
       .wordmark img {
         width: 70%;
+      }
+
+      footer.footer {
+        text-align: center;
+        padding: 2em 0;
+        margin-top: 2em;
+        border-top: 1px solid #e0e0e0;
+        background-color: var(--header-color);
+        color: #fff;
+      }
+
+      .footer-content {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .footer-logos img {
+        height: 30px;
+        margin: 0 15px;
+        opacity: 0.9;
+      }
+
+      .footer-nav {
+        display: flex;
+        gap: 30px;
+      }
+
+      .footer-nav a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 0.9em;
+        opacity: 0.8;
+        transition: opacity 0.3s;
+      }
+
+      .footer-nav a:hover {
+        opacity: 1;
       }
     </style>
 
@@ -85,145 +380,99 @@
     <title>WebXR - Samples</title>
   </head>
   <body>
+    <header class="app-header">
+      <!-- National Emblem of India - Base64 encoded SVG -->
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTYwIj48cGF0aCBmaWxsPSIjRkZGOTMzIiBkPSJNNjEuMiAxMDguM2E0My40IDQzLjQgMCAwIDAtMTMuNCAyLjkgNTYgNTYgMCAwIDEtNC44LS4xYy0xLjktLjItMy44LS42LTUuNi0xLjItMS4zLS41LTIuNi0xLjEtMy44LTEuOC0xLjItLjgtMi4zLTEuNy0zLjQtMi44YTMxLjQgMzEuNCAwIDAgMS01LjQtOS4xYy0xLTEuOC0xLjgtMy43LTIuNC01LjgtLjYtMi0xLTQuMS0xLjItNi4yYTEwMS42IDEwMS42IDAgMCAxLS4xLTEyLjIgMTAwLjQgMTAwLjQgMCAwIDEgMS4yLTExLjljLjYtMi4xIDEuNC00LjIgMi40LTYuMiAxLTIgMi4yLTMuOSA0LTUuNmEyOC45IDI4LjkgMCAwIDEgOC4yLTguOGMyLjYtMi4yIDUuNi0zLjggOC45LTQuOWExMDMuMyAxMDMuMyAwIDAgMSA0Ni40IDBjMy4zIDEuMSA2LjMgMi43IDguOSA0LjkgMi42IDIuMiA0LjggNC45IDYuNSA4IDEtMS4yIDIuOC0zLjIgNC45LTQuMyAxLjktMSAzLjktMS44IDYtMi40IDIuMi0uNiA0LjQtMS4xIDYuNy0xLjQgMS4xLS4xIDIuMy0uMiAzLjQtLjJhODAgODAgMCAwIDEgMTEuMyA2LjEgNDIgNDIgMCAwIDEtNC4zIDguOCA5MyA5MyAwIDAgMC0xMy4zIDQuOCA3Mi43IDcyLjcgMCAwIDAtMTMuMyA5LjkgNzggNzggMCAwIDAtMTEuMyAxMy42IDg2LjIgODYuMiAwIDAgMC03LjIgMTUuNyA4My44IDgzLjggMCAwIDAtMy4yIDE1LjkgODggODggMCAwIDAgMi4xIDE1LjUgNjAgNjAgMCAwIDAgNy4xIDEzLjQgNDMgNDMgMCAwIDAgMTEuMiA2LjUgNDQuMiA0NC4yIDAgMCAwIDExLjQtLjJjNC4zLTEuMiA4LjEtMy4zIDExLjQtNi4xLjc2LTEuMzYgMi4zLTMuNSAzLjctNS4zIDEuMy0xLjcgMi40LTMuMyAzLjQtNC44YS44LjggMCAwIDEtLjQtMS4zYy0uNS4zLTEgLjUtMS40LjctMS4xLjYtMi4zIDEuMS0zLjUgMS42LTEuOS44LTMuOSAxLjQtNS45IDEuOC0yIC40LTQgLjYtNi4xLjctMi4xLjEtNC4yIDAtNi4zLS4zLTEuMS0uMS0yLjItLjQtMy4zLS43YTQzLjQgNDMuNCAwIDAgMS0xMy40LTIuOXoiLz48cGF0aCBmaWxsPSIjRkZGOTMzIiBkPSJNNjAgMTQ5LjljLTEuMyAwLTIuNi0uMS0zLjgtLjMtMS4yLS4yLTIuNS0uNS0zLjctLjktMS4yLS40LTIuNC0uOS0zLjYtMS41LTEuMi0uNi0yLjQtMS4zLTMuNS0yLjItMS4xLS4OS0yLjEtMi0yLjktMy4zLS45LTEuMi0xLjYtMi42LTIuMi0zLjktLjYtMS40LTEuMS0yLjgtMS40LTQuMi0uMy0xLjUtLjUtMy0uNi00LjZhNTguNiA1OC42IDAgMCAxIDAtMTEuOGMwLTEuNS4xLTMuMS40LTQuNi4zLTEuNC44LTIuOSAxLjQtNC4zIDEuMi0yLjcgMy01LjEgNS40LTcuMyAyLjQtMi4yIDUtNC4xIDguMSA1YTY2LjIgNjYuMiAwIDAgMSA0My4yIDBjMy4xIDEgNS43IDIuOCA4LjEgNSAyLjQgMi4yIDQuMyA0LjYgNS40IDcuMyAxLjIgMi43IDEuOSg1LjUgMi4yIDguNS4zIDMgLjMgNi4xIDAgOS4yLS4yIDMtLjkgNS45LTIuMiA4LjVhMzEuMiAzMS4yIDAgMCAxLTUuNCA3LjRjLTEuMSAxLjItMi40IDIuNC0zLjUgNC4zYTM2LjMgMzYuMyAwIDAgMS05LjMgNi4yYy0xLjIuNC0yLjQuNy0zLjYgMS0yLjQuNC00LjguNC03LjIuMS0xLjItLjEtMi40LS4zLTMuNS0uNWEzMy42IDMzLjYgMCAwIDEtMTIuNi00LjZjLTEuMi0uNy0yLjMtMS40LTMuNC0yLjMtMS0xLTEuOC0yLjEtMi42LTMuMi0uOC0xLjItMS40LTIuNC0xLjgtMy44LS41LTEuMy0uNy0yLjgtLjctNC4zIDAtMS41LjMtMyAxIDQuMy42IDEuNCAxLjQgMi44IDIuNSA0LjFhMTguNiAxOC42IDAgMCAwIDEzLjIgOS41YzEuMi4zIDIuNC41IDMuNi42IDIuNC4zIDQuOC4zIDcuMiAwYTMxLjkgMzEuOSAwIDAgMCAxMS42LTMuM2MxLjItLjUgMi40LTEuMSAzLjUtMS44LTEuMSAxLjUtMi40IDMtMy44IDQuNS0xLjMgMS42LTIuOCAzLjEtNC4zIDQuNS0xLjYgMS40LTMuMiAyLjYtNSAzdGE0MiA0MiAwIDAgMS0xOC45IDQuMyAzOS41IDM5LjUgMCAwIDEtNi43LS43em0zMS4xLTEwMS4yYy0xLjQtLjUtMi44LTEtNC4yLTEuN2ExMDQgMTA0IDAgMCAwLTIwLjgtMTMuMWMtMi0xLTMuOC0yLjItNS42LTMuNWExMiAxMiAwIDAgMS00LjEtNC44bC0uMS0uMmMtMS4yLTEuNS0yLjItMy4yLTMtNC45YTIzLjggMjMuOCAwIDAgMS0xLjctNC44Yy0uMy0xLjctLjQtMy40LS40LTUuMiAwLTEuOC4xLTMuNS40LTUuMmExOC44IDE4LjggMCAwIDEgMS43LTQuOGMyLjItNC4zIDUuNS03LjggOS44LTkuOWwzLjQtMS44aC4xYy4zIDAgLjUgMCAuOC4xIDEuMy4zIDIuNi44IDMuOCAxLjRhMzUgMzUgMCAwIDEgMTMuMiA5LjggNDEgNDEgMCAwIDEgOC4zIDEyLjIgMzIgMzIgMCAwIDEgMCAxMy4zYy0uNCAyLjEtMSAyLjktMS4zIDMuNGwtLjYuN2MtMS4xIDEuMy0yLjMgMi41LTMuNiAzLjgtMS4yIDEuMi0yLjUgMi4zLTMuOCAzLjQtMS4zIDEuMS0yLjcgMi4xLTQuMSAzLjF6bS0uNC0xMy4xYzEuNC0xIDMuOC0yLjIgNS45LTMuN2ExMDMgMTAzIDAgMCAwIDIwLjYtMTQuOGMyLjItMi4zIDQuMS01IDUuNC04IC4zLS44LjYtMS42LjgtMi40LjMtMS42LjUtMy4yLjUtNC45IDAtMS43LS4yLTMuNC0uNS01LjEtLjItMS42LS42LTMuMi0xLjItNC43LTEuNC0zLjUtMy43LTYuNS02LjYtOC42LTIuOS0yLjItNi4yLTMuNS05LjgtNC4yLTMuNi0uNy03LjMtLjctMTEgMC0zLjYuNi03IDEuOS05LjggNC4yLTIuOCAyLjItNC45IDQuOS02LjYgOC42LTEuNiAzLjYtMi41IDcuNS0yLjUgMTEuNyAwIDQuMiAxIDguMiAyLjUgMTEuNyAxLjYgMy42IDQgNi42IDcgOC45IDIuOCAyLjIgNi4xIDMuNSA5LjggNC4xIDMuNi43IDcuMy43IDExIDB6bS00My42LTIuOGMtMS4zIDEuNy0yLjQgMy41LTMuMyA1LjRhMzIgMzIgMCAwIDAtMS43IDUuNmMtLjIgMS44LS4zIDMuNy0uMyA1LjUgMCAxLjguMSAzLjYuMyA1LjRhMjcgMjcgMCAwIDAgMS43IDUuNmMxIDIgMi4xIDMuOCA0IDUuM2ExOCAxOCAwIDAgMCAxMy42IDYuOWMzLjQuMyA2LjkuMyAxMC4zIDAgMy41LS4zIDYuOC0xLjMgOS44LTIuOWExOCAxOCAwIDAgMCA2LjktNi45YzEuNy0yLjYgMy01LjUgMy43LTguNmExOC40IDE4LjQgMCAwIDAgMC0xMS4yYy0uNi0zLjEtMS45LTYtMy43LTguNmExOC44IDE4LjggMCAwIDAtNi45LTYuOWMtMy0xLjYtNi4zLTIuNi05LjgtMi45LTMuNC0uMy02LjktLjMtMTAuMyAwLTMuNS4zLTYuOCAxLjMtOS44IDIuOXptNzMuMiAxMS43Yy0uMy0uOC0uNy0xLjYtMS4xLTIuNC0uNC0uOC0uOS0xLjUtMS40LTIuMy0xLjUtMi4yLTMuNC00LjEtNS43LTVhMzEgMzEgMCAwIDAtMjAtMy4xYy0zLjYtLjItNy4yIDAtMTAuOCAuNy0zLjYuNi03IDEuOS05LjggNC4yLTIuOCAyLjItNC45IDQuOS02LjYgOC42LTEuNiAzLjYtMi41IDcuNS0yLjUgMTEuNyAwIDQuMiAxIDguMiAyLjUgMTEuNyAxLjYgMy42IDQgNi42IDcgOC45IDIuOCAyLjIgNi4xIDMuNSA5LjggNC4xIDMuNi43IDcuMy43IDExIDAgMy41LS42IDYuOS0xLjggOSAtMy45YTE4IDE4IDAgMCAwIDYuOS02LjljMS43LTIuNiAzLTUuNSAzLjctOC42YTE4LjEgMTguMSAwIDAgMCAwLTExLjJjLS42LTMuMS0xLjktNi0zLjctOC42YTE4LjggMTguOCAwIDAgMC02LjktNi45Yy0zLTEuNi02LjMtMi42LTkuOC0yLjktMy40LS4zLTYuOS0uMy0xMC4zIDAtMy41LjMtNi44IDEuMy05LjggMi45YTE4LjEgMTguMSAwIDAgMC02LjkgNi45Yy0xLjcgMi43LTMgNS42LTMuNyA4LjdhMTggMTggMCAwIDAgMCAxMS4yYy42IDMuMSAyIDYgMy43IDguNiAxLjggMS43IDMuNyAzLjEgNS44IDQuMmEyNCAyNCAwIDAgMCAxNS4yIDUuNWMzLjQuMiA2LjggMCAxMC4yLS43IDMuNS0uNiA2LjgtMS45IDkuNi0zLjggMS40LTEgNC4xLTIuNyA1LjktNC45YTEuNiAxLjYgMCAwIDEtLjEtMS42eiIvPjxwYXRoIGZpbGw9IiNGRkY5MzMiIGQ9Ik02MCAxMjkuMmEyMyAyMyAwIDAgMS0xMS44LTMuMSAyMSAyMSAwIDAgMS04LjgtOC44IDIzIDMgMCAwIDEtMy4xLTExLjhjMC00LjIuOC04LjMgMi4zLTEyLjEgMS42LTMuOCAzLjktNy4yIDctOS45YTIxIDIxIDAgMCAxIDkuOS03IDIzIDMgMCAwIDEgMTIuMS0yLjNjNC4yIDAgOC4zLjggMTIuMSAyLjMgMi44IDEuNSA1LjIgMy43IDcgNi45YTE4LjYgMTguNiAwIDAgMSAyLjkgOC45YzIuMiA4LjEtLjEgMTYuOC01LjEgMjIuOS00LjggNi0xMiA5LjMtMjAuMSA5LjNabS0xNS0yMy40YzEuNSAyLjcgMi4zIDUuNiAyLjMgOC42IDAgMyAtLjggNi0yLjMgOC42YTEzIDEzIDAgMCAxLTYuOSA2LjljLTIuNi44LTUuNC4zLTguMS0uOC0yLjYtMS4yLTQuNy0zLjItNi01LjYtMS40LTIuNC0yLjItNS4yLTIuMi04LjEgMC0zIC44LTUuOCAyLjItOC4yIDEuNC0yLjMgMy40LTQuMiA1LjgtNWEzIDEzIDAgMCAxIDguMy0uOWMzIDAgNS45LjcgOC42IDIuMnp6TTkxLjEgMTA1LjhjMi43IDEuNSA1LjYgMi4zIDguNiAyLjNhMTMgMTMgMCAwIDAgOC42LTIuM2MyLjctMS41IDQuOC0zLjYgNi4yLTYuMiAxLjUtMi43IDIuMy01LjYgMi4zLTguNiAwLTMtLjgtNi0yLjMtOC42LTEuNC0yLjYtMy41LTQuNy02LjItNi4yLTIuNy0xLjUtNS42LTIuMy04LjYtMi4zLTEuNSAwLTIuOS4xLTQuNC40LTEuNC4zLTIuOC43LTRuMSAxLjQtMi43IDEuNC01IDMuNC02LjcgNS45LTEuNyAyLjYtMi42IDUuNS0yLjYgOC43IDAgMy4yLjkgNi4xIDIuNiA4LjcgMS43IDIuNyA0IDQuOSA2LjcgNi4zem0tNDUtNDYuOGMtMi4zIDEuMy00LjQgMy02LjIgNS0xLjggMi0zLjIgNC4zLTQuMiA2LjgtMSAxLjUtMS42IDMuMS0yIDQuOC0uMyAxLjYtLjUgMy4zLS41IDUuMSAwIDEuOC4yIDMuNS41IDUuMS4zIDEuNyAxIDMuNCAyIDQuOSAxIDIuNSAyLjQgNC44IDQuMiA2LjggMS44IDIgNCAzLjcgNi4yIDVsLjIuMmMxLjIgMS4yIDIuNSAyLjIgMy45IDMuMSAxLjQuOSAyLjkgMS43IDQuNCAyLjRhMzIgMzIgMCAwIDAgMTAuNSA0LjVjMS44LjMgMy42LjUgNS40LjVzMy42LS4yIDUuNC0uNWMzLjYtLjggNy0yLjQgOS44LTQuOWExOC44IDE4LjggMCAwIDAgNS43LTkuNGMyLjMtOC0uMS0xNi42LTUuMS0yMi41LTQuOC02LTEyLTkuMy0yMC05LjNhMzkgMzkgMCAwIDAtMjAuMiA1LjV6bS0uMS0xMy4yYzEuMyAwIDIuNS4xIDMuOC4zIDEuMi4yIDIuNC41IDMuNi45IDEuMi40IDIuMy45IDMuNCAxLjUgMS4xLjYgMi4yIDEuMyAzLjIgMi4yIDEgMSAyIDIgMi42IDMuMi43IDEuMiAxLjIgMi41IDEuNiAzLjguNCAxLjMuNiAyLjYuNiA0IDAgMS40LS4yIDIuOC0uNiA0LS40IDEuMy0xIDIuNi0xLjYgMy44LS43IDEuMy0xLjUgMi4yLTIuNiAzLjItMSAxLTEuOSAyLTIuOSAzLjJhMjIgMjIgMCAwIDEtMy4yIDIuMmMtMS4xLjYtMi4yIDEuMS0zLjQgMS41LTEuMi40LTIuNC43LTMuNi45LTEuMy4yLTIuNi4zLTMuOC4zLTMuMyAwLTYuNS0uOC05LjQtMi4zLTIuOC0xLjUtNS4yLTMuNy03LTYuOWExOC42IDE4LjYgMCAwIDEtMi45LTguOWMtLjQtMy0uNC02IDAtOC45LjUtMyAxLjYtNS44IDIuOS04LjNhMTkgMTkgMCAwIDEgNy02LjljMi44LTEuNSA1LjktMi4zIDkuNC0yLjN6bTEwMS44IDY1LjVjLTEuOS0uOC0zLjctMS43LTUuNC0yLjgtMS44LTEuMS0zLjQtMi40LTQuOC0zLjktMS41LTEuNS0yLjctMy4xLTMuOC00LjgtMS0xLjctMS44LTMuNS0yLjQtNS4zYTI3IDI3IDAgMCAxLTEuMi01LjggMzMgMzMgMCAwIDEgMC0xMS42YzMuMy0xMS42IDEzLjQtMjAgMjUuMy0yMC44YTQzLjQgNDMuNCAwIDAgMSA4LjkuMiA0MiA0MiAwIDAgMSAxNS4yIDUuN2wzLjIgMi41Yy4xLjMuMy41LjQuNmExIDEgMCAwIDEtMS4yLjhsLTEuNC0uMWMtMS4yLS4xLTIuNC0uMy0zLjYtLjUtMS4yLS4yLTIuNC0uNS0zLjYtLjgtMS4yLS4zLTIuNC0uNy0zLjYtMS4xLTEuMi0uNC0yLjQtLjktMy41LTEuNC0xLjEtLjUtMi4yLTEuMS0zLjIgMS44LTEtLjctMS45LTEuNC0yLjgtMi4zLTEtLjgtMS44LTEuOC0yLjYtMi44LS44LTEtMS40LTIuMS0yLTMuMy0uNS0xLjItMS0yLjQtMS4zLTMuNy0uMy0xLjItLjUtMi41LS42LTMuOC0uMi0xLjMtLjItMi42LS4yLTQgMC0xLjQuMS0yLjcuMi00IC4xLTEuMy4zLTIuNi42LTMuOC4zLTEuMy43LTIuNSAxLjMtMy43LjgxLTEuODIgMS44OC0zLjUgMy4xMS01LjA5YTIzLjM1IDEuMiAwIDEgMSAzMy4wMSAyNC4yNCAxLjIgMS4yIDAgMCAxLTEuNjUuM3oiLz48L3N2Zz4=" class="emblem" alt="National Emblem of India">
+      <div class="header-title">
+        Sanskriti Darpan
+        <span class="hindi">संस्कृति दर्पण</span>
+      </div>
+      <div class="header-actions">
+        <!-- Icons for language and accessibility would go here -->
+      </div>
+    </header>
 
     <div class='container' id='container'>
-      <header class='header'>
-        <div id='nav'>
-            <a href='./' class='selected'>Samples</a>
-            <a href='layers-samples/'>Layers Samples</a>
-            <a href='webgpu/'>WebGPU Samples</a>
-            <a href='proposals/'>Proposals</a>
-            <a href='tests/'>Test Pages</a>
-            <a href='report/'>Report</a>
-        </div>
-
-        <h1>
-          <a href='' class='wordmark'>
-            <img src='media/logo/webxr-logo.svg' alt='WebXR Logo'/>
-          </a>
-        </h1>
-        <h2 class='tagline'>Sample Pages</h2>
-      </header>
-
       <main class='main' id='main'>
-        <p><b>Does my browser support WebXR?</b><br/>
-        <div>
-          <img id='canhazimg' style='width: 32px; float: left;'></img>
-          <p id='canhazwebxr' style='margin-left: 48px;'></p>
+        <div class="title-section">
+          <h1>Sanskriti Darpan</h1>
+          <h2>The Mirror of Culture</h2>
         </div>
-        <script>
-          function isMobile(global) {
-            let check = false;
-            (function(a){if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4)))check = true})(global.navigator.userAgent||global.navigator.vendor||global.opera);
-            return check;
-          };
+        <p class="description">
+          Sanskriti Darpan is the official Government of India platform bringing our nation's magnificent heritage to life. Using stunning Augmented Reality (AR), you can explore ancient monuments, uncover hidden stories, and experience history like never before. Test your knowledge with interactive quizzes and get instant answers from our AI guides. Journey through time with this landmark Digital India initiative from the Ministry of Culture.
+        </p>
 
-          let canhazElement = document.getElementById('canhazwebxr');
-          let canhazImg = document.getElementById('canhazimg');
-          if ('xr' in navigator) {
-            canhazElement.innerText = "Your browser implements the WebXR API and may be able to run Virtual Reality or Augmented Reality experiences if you are using a supported OS and the appropriate hardware."
-            navigator.xr.isSessionSupported('immersive-vr').then((supported) => {
-              const span = document.createElement('span');
-              span.innerText = supported ? '✔️- VR support detected' : '❌ - VR support not detected';
-              canhazElement.appendChild(document.createElement('br'));
-              canhazElement.appendChild(span);
-            });
-            navigator.xr.isSessionSupported('immersive-ar').then((supported) => {
-              const span = document.createElement('span');
-              span.innerText = supported ? '✔️- AR support detected' : '❌ - AR support not detected';
-              canhazElement.appendChild(document.createElement('br'));
-              canhazElement.appendChild(span);
-            });
-            canhazImg.src = "media/textures/check-button.png";
-          } else if ('getVRDisplays' in navigator) {
-            canhazElement.innerText = "Your browser does not support WebXR, but does support the deprecated WebVR API. You may be able to run Virtual Reality experiences on sites that use the WebXR Polyfill, like this one!"
-            canhazImg.src = "media/textures/info-button.png";
-          } else if (isMobile(window)) {
-            canhazElement.innerText = "Your browser does not support WebXR, but you appear to be using a mobile device. You may be able to run Virtual Reality experiences on sites that use the WebXR Polyfill, like this one!"
-            canhazImg.src = "media/textures/info-button.png";
-          } else {
-            canhazElement.innerText = "Sorry, your browser does not support WebXR."
-            canhazImg.src = "media/textures/x-button.png";
-          }
-        </script>
+        <div class="gallery-container" id="gallery-container">
+          <!-- Exhibit cards will be injected here by JavaScript -->
+        </div>
 
-        <p><b>Sample pages demonstrating how to use various aspects of the WebXR API.</b><br/>
-        <a href="explainer.html">Learn More</a></p>
-
-        <script>
-          let pages = [
-  
-
-            { title: 'Immersive AR Session', category: 'Basics',
-              path: 'immersive-ar-session.html',
-              description: 'Demonstrates use of an "immersive-ar" XRSession to present a WebGL scene on an AR-enabled phone or headset.' },
-
-          
-          ];
-
-          let mainElement = document.getElementById("main");
-
-          // Append an element for every item in the pages list.
-          let pageIndex = 0;
-          for (var i = 0; i < pages.length; ++i) {
-            var page = pages[i];
-
-            if (page.tag) {
-              mainElement.appendChild(document.createElement(page.tag));
-              continue;
-            } else {
-              pageIndex++;
-            }
-
-            let article = document.createElement('article');
-
-            let title = document.createElement('h3');
-            title.setAttribute('data-index', pageIndex);
-
-            let titleLink = document.createElement('a');
-            titleLink.href = page.path;
-            titleLink.textContent = page.title;
-            title.appendChild(titleLink);
-            article.appendChild(title);
-
-            let category = document.createElement('h4');
-            category.textContent = page.category;
-            article.appendChild(category);
-
-            let description = document.createElement('p');
-            description.textContent = page.description;
-            article.appendChild(description);
-
-            let links = document.createElement('div');
-            links.classList.add('links');
-
-            let sourceLink = document.createElement('a');
-            sourceLink.href = 'https://github.com/immersive-web/webxr-samples/blob/main/' + page.path;
-            sourceLink.textContent = 'Source';
-            links.appendChild(sourceLink);
-
-            if (!page.noPolyfill) {
-              let polyfillLink = document.createElement('a');
-              polyfillLink.href = page.path + '?usePolyfill=0';
-              polyfillLink.textContent = 'Run Without Polyfill';
-              links.appendChild(polyfillLink);
-            }
-
-            article.appendChild(links);
-
-            mainElement.appendChild(article);
-          }
-        </script>
       </main>
 
-      <p>Models used in these samples come from <a href="https://poly.google.com">Poly</a>, and many were modeled in <a href="https://vr.google.com/blocks/">Blocks</a>.<br/>
-      They are stored and loaded using the <a href="https://www.khronos.org/gltf/">glTF 2.0 format</a>.<br/>
-      Attribution for individual models can be found under the <a href="https://github.com/immersive-web/webxr-samples/tree/main/media/gltf">media/gltf</a> folders for this repository.</p>
-
-      <h3><a class='github-link' href='https://github.com/immersive-web/webxr-samples'>View samples source on GitHub</a></h3>
-
       <footer class='footer'>
+        <div class="footer-content">
+          <div class="footer-logos">
+            <!-- Placeholder for Digital India and Incredible India logos -->
+          </div>
+          <div class="footer-nav">
+            <a href="#">Home</a>
+            <a href="#">Map</a>
+            <a href="#">Scan</a>
+          </div>
+        </div>
       </footer>
     </div>
+
+    <script>
+      const exhibits = [
+        {
+          id: 'konark-sun-temple',
+          title: 'Konark Sun Temple',
+          description: 'A 13th-century CE sun temple at Konark about 35 kilometres northeast from Puri on the coastline of Odisha, India.',
+          imageUrl: 'https://images.unsplash.com/photo-1617364292277-a0fab5bb11a3?q=80&w=1932&auto=format&fit=crop',
+        },
+        {
+          id: 'jagannath-temple',
+          title: 'Jagannath Temple, Puri',
+          description: 'An important Hindu temple dedicated to Jagannath, a form of Vishnu, in Puri in the state of Odisha.',
+          imageUrl: 'https://images.unsplash.com/photo-1628269215524-a017502bac7a?q=80&w=2070&auto=format&fit=crop',
+        },
+        {
+          id: 'udayagiri-caves',
+          title: 'Udayagiri & Khandagiri Caves',
+          description: 'Partly natural and partly artificial caves of archaeological, historical and religious importance near the city of Bhubaneswar.',
+          imageUrl: 'https://images.unsplash.com/photo-1600691399338-359b3593ff0d?q=80&w=2070&auto=format&fit=crop',
+        },
+        {
+          id: 'dhauli-stupa',
+          title: 'Dhauli Shanti Stupa',
+          description: 'A Buddhist stupa in Dhauli, on the banks of the river Daya. It is a peace pagoda monument.',
+          imageUrl: 'https://images.unsplash.com/photo-1587899765383-b35a4d4f5592?q=80&w=2070&auto=format&fit=crop',
+        }
+      ];
+
+      const galleryContainer = document.getElementById('gallery-container');
+
+      exhibits.forEach((exhibit, index) => {
+        const card = document.createElement('div');
+        card.className = 'exhibit-card';
+        
+        // The link now goes to exhibit.html with the site's ID
+        const link = document.createElement('a');
+        link.href = `exhibit.html?site=${exhibit.id}`;
+        link.style.textDecoration = 'none';
+        link.style.color = 'inherit';
+        link.style.animationDelay = `${index * 100}ms`;
+
+        card.innerHTML = `
+          <div class="card-image" style="background-image: url('${exhibit.imageUrl}')"></div>
+          <div class="card-content">
+            <h3>${exhibit.title}</h3>
+            <p>${exhibit.description}</p>
+          </div>
+        `;
+        link.appendChild(card);
+        galleryContainer.appendChild(link);
+      });
+    </script>
   </body>
 </html>
