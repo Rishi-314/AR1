@@ -51,6 +51,12 @@
         z-index: 1000;
         box-shadow: 0 2px 5px rgba(0,0,0,0.05);
       }
+      .top-nav .container {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        gap: 20px;
+      }
       .nav-left { display: flex; align-items: center; gap: 15px; }
       .emblem { height: 40px; }
       .logo-text { font-weight: 700; font-size: 1.4em; color: var(--dark-charcoal); }
@@ -248,16 +254,12 @@
   <body>
     <header class="top-nav">
       <div class="container">
-        <div class="nav-left">
-          <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9b/Odisha_Govt_Logo.svg/1200px-Odisha_Govt_Logo.svg.png" alt="Government of Odisha Emblem" class="emblem">
-          <span class="logo-text">Sanskriti Darpan</span>
-        </div>
+        <div class="nav-left"></div>
+        <span class="logo-text">Sanskriti Darpan</span>
         <nav class="nav-right">
           <a href="index.html">Home</a>
           <a href="about.html">About the Initiative</a>
-          <a href="#">Sites</a>
-          <a href="#">Contact Us</a>
-          <svg class="search-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="#2c3e50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 21L16.65 16.65" stroke="#2c3e50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <a href="#featured-sites">Sites</a>
         </nav>
       </div>
     </header>
@@ -319,27 +321,10 @@
       <div class="container footer-content">
         <div class="footer-column">
           <h4>Sanskriti Darpan</h4>
-          <p>An initiative by the Department of Tourism, Government of Odisha, to bring our state's rich heritage to a global audience through technology.</p>
-        </div>
+          <p>An initiative by the Government of Odisha, to bring our state's rich heritage to a global audience through technology.</p>
+        
         <div class="footer-column">
-          <h4>Quick Links</h4>
-          <a href="about.html">About the Initiative</a>
-          <a href="#">All Heritage Sites</a>
-          <a href="#">Privacy Policy</a>
-          <a href="#">Contact Us</a>
-        </div>
-        <div class="footer-column">
-          <h4>Follow Us</h4>
-          <div class="social-icons">
-            <a href="#"><img src="https://simpleicons.org/icons/x.svg" alt="X (Twitter)"></a>
-            <a href="#"><img src="https://simpleicons.org/icons/facebook.svg" alt="Facebook"></a>
-            <a href="#"><img src="https://simpleicons.org/icons/instagram.svg" alt="Instagram"></a>
-            <a href="#"><img src="https://simpleicons.org/icons/youtube.svg" alt="YouTube"></a>
-          </div>
-        </div>
-        <div class="footer-column">
-          <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9b/Odisha_Govt_Logo.svg/1200px-Odisha_Govt_Logo.svg.png" alt="Government of Odisha Emblem" class="emblem" style="height: 50px; background: white; padding: 5px; border-radius: 5px;">
-        </div>
+         
       </div>
       <div class="container footer-bottom">
         © 2024 Government of Odisha. All Rights Reserved.
@@ -369,10 +354,11 @@
               "https://upload.wikimedia.org/wikipedia/commons/4/4f/Subai_Jain_Temple_Koraput.jpg",
               "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Sitabhinji_group_of_rock_shelters_and_the_rock_with_the_tempera_painting_of_Ravana_Chhaya_04.jpg/1280px-Sitabhinji_group_of_rock_shelters_and_the_rock_with_the_tempera_painting_of_Ravana_Chhaya_04.jpg"
             ],
-            cardImage: "https://www.livehistoryindia.com/wp-content/uploads/2020/09/Untitled-design-2020-09-02T120023.235.jpg",
+            cardImage: "Images-frontend/Ancient Jain Sculptures – Nandapur Region, Koraput.png",
             cardTitle: "Ancient Jain Sculptures",
             cardSubtitle: "Nandapur Region, Koraput",
-            arModel: "placeholder.glb" // Placeholder
+            arModel: "media/site--1",
+            arPage: "Site-1.html" // Specific AR page for this site
           },
           'buddhist-relics': {
             title: 'Buddhist Relics, Bhandaripokhari',
@@ -393,10 +379,11 @@
               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_bIu_VjB_u_v_w_x_y_z_&s",
               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_bIu_VjB_u_v_w_x_y_z_&s"
             ],
-            cardImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Bhandaripokhari_Excavation.jpg/1024px-Bhandaripokhari_Excavation.jpg",
+            cardImage: "Images-frontend/uddhist Relics - Bhandaripokhari, Bhadrak.png",
             cardTitle: "Buddhist Relics",
             cardSubtitle: "Bhandaripokhari, Bhadrak",
-            arModel: "placeholder.glb"
+            arModel: "media/Site-2",
+            arPage: "Site-2.html" // Specific AR page for this site
           },
           'keonjhar-relics': {
             title: 'Keonjhar Archaeological Relics',
@@ -416,10 +403,11 @@
               "Images-Frontend/keonjhar-relics.png",
               "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Sitabhinji_group_of_rock_shelters_and_the_rock_with_the_tempera_painting_of_Ravana_Chhaya_04.jpg/1280px-Sitabhinji_group_of_rock_shelters_and_the_rock_with_the_tempera_painting_of_Ravana_Chhaya_04.jpg"
             ],
-            cardImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Sitabhinji_group_of_rock_shelters_and_the_rock_with_the_tempera_painting_of_Ravana_Chhaya_04.jpg/1280px-Sitabhinji_group_of_rock_shelters_and_the_rock_with_the_tempera_painting_of_Ravana_Chhaya_04.jpg",
+            cardImage: "Images-frontend/Keonjhar Archaeological Relics.png",
             cardTitle: "Keonjhar Archaeological Relics",
             cardSubtitle: "Keonjhar",
-            arModel: "placeholder.glb"
+            arModel: "media/site--3",
+            arPage: "Site-3.html" // Specific AR page for this site
           },
           'diamond-triangle': {
             title: 'Buddhist Diamond Triangle',
@@ -439,10 +427,11 @@
               "https://upload.wikimedia.org/wikipedia/commons/7/76/Udayagiri_Buddhist_Complex.jpg",
               "https://upload.wikimedia.org/wikipedia/commons/d/d8/Lalitgiri_Archaeological_Museum_-_Main_Stupa.jpg"
             ],
-            cardImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Ratnagiri_Monastery_Jajpur.jpg/1280px-Ratnagiri_Monastery_Jajpur.jpg",
+            cardImage: "Images-frontend/Buddhist Diamond Triangle - Lalitgiri, Ratnagiri, Udayagiri (Jajpur).png",
             cardTitle: "Buddhist Diamond Triangle",
             cardSubtitle: "Lalitgiri, Ratnagiri, Udayagiri",
-            arModel: "placeholder.glb"
+            arModel: "media/site--4",
+            arPage: "Site-4.html" // Specific AR page for this site
           }
         };
 
@@ -493,7 +482,7 @@
         });
 
         // Populate Interactive Buttons
-        document.getElementById('ar-button').href = `immersive-ar-session.html?model=${data.arModel}`;
+        document.getElementById('ar-button').href = data.arPage;
         // document.getElementById('quiz-button').href = `quiz.html?site=${siteId}`; // Example for future
         document.getElementById('ai-button').href = `chatMVP.html?site=${siteId}`;
 
@@ -510,7 +499,7 @@
             <div class="card-content">
               <h3>${otherSite.cardTitle}</h3>
               <p>${otherSite.cardSubtitle}</p>
-            </div>
+            </div> 
           `;
           exploreGrid.appendChild(card);
         });

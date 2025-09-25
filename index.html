@@ -49,6 +49,12 @@
         z-index: 1000;
         box-shadow: 0 2px 5px rgba(0,0,0,0.05);
       }
+      .top-nav .container {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        gap: 20px;
+      }
       .nav-left {
         display: flex;
         align-items: center;
@@ -61,6 +67,7 @@
         font-weight: 700;
         font-size: 1.4em;
         color: var(--dark-charcoal);
+        text-align: center;
       }
       .nav-right {
         display: flex;
@@ -226,16 +233,12 @@
   <body>
     <header class="top-nav">
       <div class="container">
-        <div class="nav-left">
-          <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9b/Odisha_Govt_Logo.svg/1200px-Odisha_Govt_Logo.svg.png" alt="Government of Odisha Emblem" class="emblem">
-          <span class="logo-text">Sanskriti Darpan</span>
-        </div>
+        <div class="nav-left"></div>
+        <span class="logo-text">Sanskriti Darpan</span>
         <nav class="nav-right">
           <a href="#">Home</a>
           <a href="about.html">About the Initiative</a>
-          <a href="#">Sites</a>
-          <a href="#">Contact Us</a>
-          <svg class="search-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="#2c3e50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 21L16.65 16.65" stroke="#2c3e50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <a href="#featured-sites">Sites</a>
         </nav>
       </div>
     </header>
@@ -288,27 +291,14 @@
       <div class="container footer-content">
         <div class="footer-column">
           <h4>Sanskriti Darpan</h4>
-          <p>An initiative by the Department of Tourism, Government of Odisha, to bring our state's rich heritage to a global audience through technology.</p>
+          <p>An initiative by the Government of Odisha, to bring our state's rich heritage to a global audience through technology.</p>
         </div>
         <div class="footer-column">
           <h4>Quick Links</h4>
           <a href="about.html">About the Initiative</a>
           <a href="#">All Heritage Sites</a>
-          <a href="#">Privacy Policy</a>
-          <a href="#">Contact Us</a>
-        </div>
-        <div class="footer-column">
-          <h4>Follow Us</h4>
-          <div class="social-icons">
-            <a href="#"><img src="https://simpleicons.org/icons/x.svg" alt="X (Twitter)"></a>
-            <a href="#"><img src="https://simpleicons.org/icons/facebook.svg" alt="Facebook"></a>
-            <a href="#"><img src="https://simpleicons.org/icons/instagram.svg" alt="Instagram"></a>
-            <a href="#"><img src="https://simpleicons.org/icons/youtube.svg" alt="YouTube"></a>
-          </div>
-        </div>
-        <div class="footer-column">
-          <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9b/Odisha_Govt_Logo.svg/1200px-Odisha_Govt_Logo.svg.png" alt="Government of Odisha Emblem" class="emblem" style="height: 50px; background: white; padding: 5px; border-radius: 5px;">
-        </div>
+          
+      
       </div>
       <div class="container footer-bottom">
         © 2024 Government of Odisha. All Rights Reserved.
