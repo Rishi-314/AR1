@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Heritage Assistant</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f4f4f9; color: #333; max-width: 800px; margin: 2rem auto; padding: 1rem; }
+        h1 { color: #4a4a4a; }
+        textarea { width: 100%; min-height: 80px; padding: 10px; border-radius: 8px; border: 1px solid #ccc; font-size: 1rem; }
+        button { background-color: #4285F4; color: white; border: none; padding: 12px 20px; border-radius: 8px; font-size: 1rem; cursor: pointer; margin-top: 10px; }
+        button:disabled { background-color: #9e9e9e; cursor: not-allowed; }
+        #response { margin-top: 20px; padding: 15px; background-color: #fff; border-radius: 8px; border: 1px solid #e0e0e0; white-space: pre-wrap; line-height: 1.6; }
+    </style>
+</head>
+<body>
+    <h1>AI Heritage Assistant 🏛️</h1>
+    <p>Ask a question about the provided Indian heritage sites.</p>
+
+    <textarea id="questionInput" placeholder="e.g., Which site is known for its water management system?"></textarea>
+    <button id="askButton">Ask AI</button>
+
+    <h3>Response:</h3>
+    <pre id="response">The AI's answer will appear here...</pre>
+
+    <script>
+        // --- 1. SETUP ---
+        // ⚠️ IMPORTANT: Replace with your actual API key.
+        const API_KEY = "YOUR_API_KEY_HERE"; // Replace with your actual API key
+        const MODEL_NAME = "gemini-1.5-flash"; // A fast and capable model
+
+        // The context data containing information about the heritage sites.
+        const CONTEXT_DATA = `
+        1. Site: Ancient Jain Sculptures – Nandapur Region, Koraput
+            - Represents the rich Jain heritage of the historic Nandapur Kingdom.
+            - Was a significant Jain center, particularly for gemstone traders, as early as the 4th century.
+            - Features sculptures of Tirthankaras like Rishabhanatha, Parshvanatha, and Mahavira.
+            - Serves as crucial evidence of the flourishing Jain culture and art in southern Odisha.
+
+        2. Site: Buddhist Relics - Bhandaripokhari, Bhadrak District, Odisha
+            - Discoveries suggest the area was a significant cultural and religious hub from the 6th to 9th centuries CE.
+            - Relics include idols of Buddha in the 'Bhumisparsha Mudra' and other deities.
+            - Indicates a confluence of both Buddhist and Shaivite traditions in the same region.
+            - Provides valuable insight into the religious and artistic practices of the era.
+
+        3. Temples of Ekamra Kshetra - Old Town, Bhubaneswar
+            - Represents a continuous architectural heritage spanning over 2,000 years in the "Temple City."
+            - Considered the finest example of the Kalinga style of temple architecture.
+            - Home to hundreds of temples, led by the prominent Lingaraj Temple.
+            - Showcases the complete evolution of Odishan temple design and the city's role as a major religious center.
+
+        4. Site: Keonjhar Archaeological Relics 
+            - Holds evidence of human habitation dating back to the Mesolithic period (hunter-gatherer communities).
+            - Numerous sites contain microlithic artifacts and early implements.
+            - The region is also rich in later Jaina antiquities from the medieval period.
+            - Crucial for understanding the long-term cultural and historical evolution of this part of Odisha.
+
+
+        5. Buddhist Sites - Lalitgiri, Ratnagiri, Udayagiri (Jajpur)
+            - Collectively known as the "Diamond Triangle," a major center for Buddhism in ancient India.
+            - Flourished for over a millennium, from the 1st century BCE to the 12th century CE.
+            - Was an important center for advanced learning, particularly for Mahayana and Vajrayana Buddhism.
+            - Excavations revealed extensive monastic complexes, stupas, and sacred relic caskets believed to contain relics of the Buddha.
+
+        `;
+
+        // --- 2. GET ELEMENTS ---
+        const askButton = document.getElementById('askButton');
+        const questionInput = document.getElementById('questionInput');
+        const responseEl = document.getElementById('response');
+
+        // --- 3. API CALL FUNCTION ---
+        async function askAI() {
+            // Disable button and show loading state
+            askButton.disabled = true;
+            responseEl.textContent = 'Thinking...';
+
+            const question = questionInput.value;
+
+            const prompt = `
+            You are an expert assistant on Indian heritage sites.
+            Based ONLY on the context provided below, answer the user's question accurately and concisely.
+            If the information is not present in the context, clearly state that the answer is not available in the provided data.
+
+            CONTEXT:
+            ---
+            ${CONTEXT_DATA}
+            ---
+
+            QUESTION: ${question}
+            `;
+
+            const api_url = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL_NAME}:generateContent?key=${API_KEY}`;
+
+            try {
+                const response = await fetch(api_url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: prompt }] }]
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API call failed with status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                const aiText = data.candidates[0].content.parts[0].text;
+                responseEl.textContent = aiText.trim();
+
+            } catch (error) {
+                responseEl.textContent = `Error: ${error.message}`;
+                console.error(error);
+            } finally {
+                // Re-enable the button
+                askButton.disabled = false;
+            }
+        }
+
+        // --- 4. EVENT LISTENER ---
+        askButton.addEventListener('click', askAI);
+
+    </script>
+</body>
+</html>
