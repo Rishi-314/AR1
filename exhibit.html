@@ -325,7 +325,7 @@
             'https://images.unsplash.com/photo-1617364292277-a0fab5bb11a3?q=80&w=2070&auto=format&fit=crop',
             'https://images.unsplash.com/photo-1582112526937-65664075a464?q=80&w=2070&auto=format=fit=crop',
           ],
-          modelUrl: 'media/gltf/space/space.gltf', // Placeholder model
+          modelUrl: 'Site-1.html', // Link to Site-1.html
           quizTitle: 'Kalinga Quiz: Konark',
           quizDescription: 'Explore the legends and architecture of this Kalinga marvel.',
           botTitle: 'Ask Utkal (AI Guide)',
@@ -338,7 +338,7 @@
           imageUrl: 'https://images.unsplash.com/photo-1628269215524-a017502bac7a?q=80&w=2070&auto=format&fit=crop',
           overview: 'One of the four great \'Char Dham\' pilgrimage sites, the Jagannath Temple in Puri is a sacred Hindu temple dedicated to Lord Jagannath. The temple is famous for its annual Ratha Yatra, or chariot festival, which attracts millions of devotees from around the world. Its massive complex is a stunning example of Kalinga architecture.',
           history: 'The present temple was rebuilt from the 10th century onwards, on the site of an earlier temple, and begun by King Anantavarman Chodaganga Deva.',
-          galleryImages: [], modelUrl: 'media/gltf/space/space.gltf',
+          galleryImages: [], modelUrl: 'Site-2.html', // Link to Site-2.html
           quizTitle: 'Kalinga Quiz: Puri', botTitle: 'Ask Utkal (AI Guide)', quizDescription: 'Test your knowledge of this sacred site.', botDescription: 'Your guide to Odishan culture.', exploreTitle: 'Explore More of Odisha'
         },
         'udayagiri-caves': {
@@ -347,7 +347,7 @@
           imageUrl: 'https://images.unsplash.com/photo-1600691399338-359b3593ff0d?q=80&w=2070&auto=format&fit=crop',
           overview: 'The twin hills of Udayagiri and Khandagiri are home to a series of finely and ornately carved caves. These caves, with their rock-cut shelters, are believed to be one of India\'s earliest Jain rock-cut monasteries. The inscriptions and carvings provide a unique window into the ancient history of the region.',
           history: 'The caves are situated on two adjacent hills and are believed to have been carved out as residential blocks for Jain monks during the reign of King Kharavela.',
-          galleryImages: [], modelUrl: 'media/gltf/space/space.gltf',
+          galleryImages: [], modelUrl: 'Site-3.html', // Link to Site-3.html
           quizTitle: 'Kalinga Quiz: Caves', botTitle: 'Ask Utkal (AI Guide)', quizDescription: 'Test your knowledge of these ancient caves.', botDescription: 'Your guide to Odishan culture.', exploreTitle: 'Explore More of Odisha'
         },
         'dhauli-stupa': {
@@ -356,7 +356,7 @@
           imageUrl: 'https://images.unsplash.com/photo-1587899765383-b35a4d4f5592?q=80&w=2070&auto=format&fit=crop',
           overview: 'Perched atop Dhauli hill, the gleaming white Shanti Stupa (Peace Pagoda) is a symbol of peace and the end of war. It was built on the site of the historic Kalinga War, which led Emperor Ashoka to renounce violence and embrace Buddhism. The monument offers panoramic views of the surrounding plains and the Daya River.',
           history: 'It is here that Emperor Ashoka, filled with remorse after the Kalinga War, renounced violence and embraced Buddhism.',
-          galleryImages: [], modelUrl: 'media/gltf/space/space.gltf',
+          galleryImages: [], modelUrl: 'Site-4.html', // Link to Site-4.html
           quizTitle: 'Kalinga Quiz: Dhauli', botTitle: 'Ask Utkal (AI Guide)', quizDescription: 'Test your knowledge of this historic site.', botDescription: 'Your guide to Odishan culture.', exploreTitle: 'Explore More of Odisha'
         },
       };
@@ -417,7 +417,7 @@
           document.getElementById('quiz-description').textContent = data.quizDescription;
           document.getElementById('bot-title').textContent = data.botTitle;
           document.getElementById('bot-description').textContent = data.botDescription;
-          document.getElementById('ar-button').href = `immersive-ar-session.html?model=${data.modelUrl}`;
+          document.getElementById('ar-button').href = data.modelUrl;
           document.getElementById('explore-title').textContent = data.exploreTitle;
 
           const galleryGrid = document.getElementById('gallery-grid');
@@ -449,11 +449,3 @@
     </script>
   </body>
 </html>
-
-```
-
-### 3. Modify `immersive-ar-session.html`
-
-Finally, I'll update the AR session page to load the 3D model specified in the URL, making it a reusable component for any exhibit.
-
-```diff
