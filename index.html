@@ -1,478 +1,318 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='chrome=1'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <meta name='mobile-web-app-capable' content='yes'>
-    <meta name='apple-mobile-web-app-capable' content='yes'>
-
-    <meta name='twitter:card' content='summary'>
-    <meta name='twitter:title' content='WebXR Samples'>
-    <meta name='twitter:description' content='Sample WebXR pages for testing and reference'>
-
-    <link rel='icon' type='image/png' sizes='32x32' href='favicon-32x32.png'>
-    <link rel='icon' type='image/png' sizes='96x96' href='favicon-96x96.png'>
-
-    <link rel='stylesheet' href='css/stylesheet.css'>
-    <link rel='stylesheet' href='css/pygment_trac.css'>
-
+    <title>Sanskriti Darpan - Government of Odisha</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-      article {
-        position: relative;
-        padding: 0.5em;
-        background-color: rgba(255, 255, 255, 0.90);
-        margin-bottom: 1em;
-        border-radius: 3px;
-      }
-
-      article h3 {
-        font-size: 1.0em;
-        margin-top: 0px;
-        margin-bottom: 0px;
-      }
-
-      article h3::before {
-        display: inline-block;
-        content: attr(data-index) ' - ';
-        font-weight: bold;
-        white-space: nowrap;
-        margin-right: 0.2em;
-      }
-
-      article h4 {
-        position: absolute;
-        right: 0.5em;
-        top: 0.5em;
-        margin-top: 0px;
-        margin-bottom: 0px;
-      }
-
-      article p {
-        margin: 0.5em;
-      }
-
-      article .links {
-        margin-left: 0.5em;
-        margin-right: 0.5em;
-      }
-
-      article a {
-        display: inline-block;
-      }
-
-      article a:not(:first-child)::before {
-        display: inline-block;
-        content: '•';
-        font-weight: bold;
-        white-space: nowrap;
-        margin-left: 0.5em;
-        margin-right: 0.5em;
-      }
-
-      .github-link {
-        font-size: 0.8em;
-      }
-
-      /* New Museum Theme Styles */
       :root {
-        --background-color: #F5F5DC; /* Khadi Off-White */
-        --text-color: #212121; /* Official Grey */
-        --accent-color: #FF9933; /* Deep Saffron */
-        --header-color: #000080; /* Ashoka Navy Blue */
+        --dark-charcoal: #2c3e50;
+        --vibrant-green: #27ae60;
+        --white: #ffffff;
+        --light-grey-bg: #f8f9fa;
+        --text-color: #34495e;
+        --footer-text: #bdc3c7;
       }
 
       body {
-        background-color: var(--background-color);
-        color: var(--text-color);
+        font-family: 'Inter', sans-serif;
+        background-color: var(--white);
         margin: 0;
         padding: 0;
+        color: var(--text-color);
+        line-height: 1.6;
+      }
+
+      * {
+        box-sizing: border-box;
       }
 
       .container {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 20px;
-      }
-      
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .app-header {
-        background-color: var(--header-color);
-        color: #fff;
-        padding: 10px 20px;
-        display: flex;
-        align-items: center;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-      }
-
-      .app-header .emblem {
-        height: 40px;
-        margin-right: 15px;
-      }
-
-      .app-header .header-title {
-        font-family: 'Roboto', sans-serif;
-        font-weight: 700;
-        font-size: 1.2em;
-      }
-
-      .app-header .header-title .hindi {
-        font-family: 'Tiro Devanagari Sanskrit', serif;
-        font-size: 0.9em;
-        opacity: 0.9;
-        display: block;
-      }
-
-      .app-header .header-actions {
-        margin-left: auto;
-        /* Placeholder for language/accessibility icons */
-      }
-
-      .hero-image {
-        width: 100%;
-        height: 400px;
-        /* A stunning, high-quality photograph of Machu Picchu at sunrise. */
-        background-image: url('https://images.unsplash.com/photo-1526749837599-b412b1d1c54f?q=80&w=2070&auto=format&fit=crop');
-        background-size: cover;
-        background-position: center;
-        border-radius: 8px;
-        margin-bottom: 2em;
-      }
-
-      .title-section {
-        text-align: center;
-        margin: 2em 0 1em 0;
-      }
-
-      .title-section h1 {
-        font-family: 'Roboto', sans-serif;
-        font-size: 4em;
-        margin: 0;
-        font-weight: 700;
-      }
-
-      .title-section h1::after {
-        content: '';
-        display: block;
-        width: 80px;
-        height: 2px;
-        background: var(--accent-color);
-        margin: 0.4em auto 0.5em;
-      }
-
-      .title-section h2 {
-        font-family: 'Tiro Devanagari Sanskrit', serif;
-        font-size: 1.2em;
-        margin: 0;
-        font-weight: 400;
-        color: #6c757d;
-      }
-
-      .description {
-        text-align: center;
-        max-width: 700px;
-        margin: 0 auto 3em auto;
-        font-size: 1.1em;
-        line-height: 1.6;
-      }
-
-      .cta-container {
-        text-align: center;
-        margin-bottom: 3em;
-      }
-
-      .cta-button {
-        background-color: var(--accent-color);
-        color: white;
-        border: none;
-        border-radius: 50px;
-        padding: 20px 40px;
-        font-size: 1.2em;
-        font-weight: bold;
-        text-decoration: none;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        display: inline-block;
-      }
-
-      .cta-button:hover {
-        background-color: #e68a2e; /* Darker Saffron */
-      }
-
-      .tabs {
-        display: flex;
-        border-bottom: 1px solid #dee2e6;
-        margin-bottom: 1.5em;
-      }
-
-      .tab-button {
-        padding: 1em 1.5em;
-        cursor: pointer;
-        border: none;
-        background: none;
-        font-size: 1em;
-        color: var(--text-color);
-        border-bottom: 3px solid transparent;
-        margin-bottom: -1px; /* Overlap the container's border */
-      }
-
-      .tab-button.active {
-        color: var(--accent-color);
-        border-bottom-color: var(--accent-color);
-        font-weight: bold;
-      }
-
-      .tab-content {
-        display: none;
-        line-height: 1.7;
-      }
-
-      .tab-content.active {
-        display: block;
-      }
-
-      /* New Gallery Styles */
-      .gallery-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        align-items: stretch;
-        gap: 2em;
-        padding: 2em 0;
-      }
-
-      .exhibit-card {
-        background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 6px 20px rgba(0,0,0,0.07);
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        animation: fadeInUp 0.5s ease-out forwards;
-        opacity: 0; /* Start hidden for animation */
-      }
-
-      .exhibit-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 12px 28px rgba(0,0,0,0.1);
-      }
-
-      .exhibit-card .card-image {
-        width: 100%;
-        height: 200px;
-        background-size: cover;
-        background-position: center;
-        position: relative;
-        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      }
-
-      .exhibit-card:hover .card-image {
-        transform: scale(1.05);
-      }
-
-      .exhibit-card .card-image::after {
-        content: '→';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) scale(0.8);
-        font-size: 4em;
-        color: white;
-        opacity: 0;
-        transition: all 0.3s ease;
-      }
-
-      .exhibit-card .card-content {
-        padding: 1.5em;
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .exhibit-card:hover .card-image::after {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-      }
-
-      .exhibit-card .card-content h3 {
-        margin: 0 0 0.5em 0;
-        font-size: 1.5em;
-        font-weight: 700;
-        color: var(--text-color);
-      }
-
-      .exhibit-card .card-content p {
-        margin: 0 0 1.5em 0;
-        flex-grow: 1;
-        line-height: 1.6;
-        color: #6c757d;
-        /* Truncate text to 3 lines */
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-               line-clamp: 3; 
-        -webkit-box-orient: vertical;
-      }
-
-      .wordmark img {
-        width: 70%;
-      }
-
-      footer.footer {
-        text-align: center;
-        padding: 2em 0;
-        margin-top: 2em;
-        border-top: 1px solid #e0e0e0;
-        background-color: var(--header-color);
-        color: #fff;
-      }
-
-      .footer-content {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        max-width: 1200px;
-        margin: 0 auto;
         padding: 0 20px;
       }
 
-      .footer-logos img {
-        height: 30px;
-        margin: 0 15px;
-        opacity: 0.9;
-      }
-
-      .footer-nav {
+      /* Top Navigation Bar */
+      .top-nav {
+        background-color: var(--white);
+        padding: 15px 0;
         display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #ecf0f1;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      }
+      .nav-left {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+      .emblem {
+        height: 40px;
+      }
+      .logo-text {
+        font-weight: 700;
+        font-size: 1.4em;
+        color: var(--dark-charcoal);
+      }
+      .nav-right {
+        display: flex;
+        align-items: center;
         gap: 30px;
       }
-
-      .footer-nav a {
-        color: #fff;
+      .nav-right a {
         text-decoration: none;
-        font-size: 0.9em;
-        opacity: 0.8;
-        transition: opacity 0.3s;
+        color: var(--text-color);
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+      .nav-right a:hover {
+        color: var(--vibrant-green);
+      }
+      .search-icon {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
       }
 
-      .footer-nav a:hover {
+      /* Hero Section */
+      .hero-section {
+        height: 60vh;
+        min-height: 400px;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('Images-Frontend/Hero-section.png');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: var(--white);
+        padding: 20px;
+      }
+      .hero-section h1 {
+        font-size: 3em;
+        margin: 0 0 10px 0;
+        font-weight: 700;
+      }
+      .hero-section p {
+        font-size: 1.2em;
+        max-width: 700px;
+        margin-bottom: 30px;
+      }
+      .cta-button {
+        background-color: var(--vibrant-green);
+        color: var(--white);
+        padding: 15px 30px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.1em;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+      }
+      .cta-button:hover {
+        background-color: #2ecc71;
+        transform: translateY(-2px);
+      }
+
+      /* Featured Sites Section */
+      .featured-sites {
+        padding: 60px 0;
+        background-color: var(--light-grey-bg);
+      }
+      .featured-sites h2 {
+        text-align: center;
+        font-size: 2.5em;
+        margin-bottom: 40px;
+        color: var(--dark-charcoal);
+      }
+      .sites-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+      }
+      .site-card {
+        background-color: var(--white);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .site-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+      }
+      .site-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+      .card-content {
+        padding: 20px;
+      }
+      .card-content h3 {
+        margin: 0 0 5px 0;
+        font-size: 1.3em;
+        color: var(--dark-charcoal);
+      }
+      .card-content p {
+        margin: 0;
+        color: #7f8c8d;
+        font-size: 0.9em;
+      }
+
+      /* Footer */
+      .footer {
+        background-color: var(--dark-charcoal);
+        color: var(--footer-text);
+        padding: 40px 0;
+      }
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+      }
+      .footer-column h4 {
+        color: var(--white);
+        margin-bottom: 15px;
+        font-weight: 700;
+      }
+      .footer-column p, .footer-column a {
+        color: var(--footer-text);
+        text-decoration: none;
+        margin-bottom: 10px;
+        display: block;
+        transition: color 0.3s ease;
+      }
+      .footer-column a:hover {
+        color: var(--white);
+      }
+      .social-icons {
+        display: flex;
+        gap: 15px;
+      }
+      .social-icons a {
+        display: inline-block;
+      }
+      .social-icons img {
+        width: 24px;
+        height: 24px;
+        opacity: 0.8;
+        transition: opacity 0.3s ease;
+      }
+      .social-icons img:hover {
         opacity: 1;
       }
+      .footer-bottom {
+        text-align: center;
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid #34495e;
+        font-size: 0.9em;
+      }
     </style>
-
-    <!--[if lt IE 9]>
-    <script src='https://html5shiv.googlecode.com/svn/trunk/html5.js'></script>
-    <![endif]-->
-    <title>WebXR - Samples</title>
   </head>
   <body>
-    <header class="app-header">
-      <!-- National Emblem of India - Base64 encoded SVG -->
-      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTYwIj48cGF0aCBmaWxsPSIjRkZGOTMzIiBkPSJNNjEuMiAxMDguM2E0My40IDQzLjQgMCAwIDAtMTMuNCAyLjkgNTYgNTYgMCAwIDEtNC44LS4xYy0xLjktLjItMy44LS42LTUuNi0xLjItMS4zLS41LTIuNi0xLjEtMy44LTEuOC0xLjItLjgtMi4zLTEuNy0zLjQtMi44YTMxLjQgMzEuNCAwIDAgMS01LjQtOS4xYy0xLTEuOC0xLjgtMy43LTIuNC01LjgtLjYtMi0xLTQuMS0xLjItNi4yYTEwMS42IDEwMS42IDAgMCAxLS4xLTEyLjIgMTAwLjQgMTAwLjQgMCAwIDEgMS4yLTExLjljLjYtMi4xIDEuNC00LjIgMi40LTYuMiAxLTIgMi4yLTMuOSA0LTUuNmEyOC45IDI4LjkgMCAwIDEgOC4yLTguOGMyLjYtMi4yIDUuNi0zLjggOC45LTQuOWExMDMuMyAxMDMuMyAwIDAgMSA0Ni40IDBjMy4zIDEuMSA2LjMgMi43IDguOSA0LjkgMi42IDIuMiA0LjggNC45IDYuNSA4IDEtMS4yIDIuOC0zLjIgNC45LTQuMyAxLjktMSAzLjktMS44IDYtMi40IDIuMi0uNiA0LjQtMS4xIDYuNy0xLjQgMS4xLS4xIDIuMy0uMiAzLjQtLjJhODAgODAgMCAwIDEgMTEuMyA2LjEgNDIgNDIgMCAwIDEtNC4zIDguOCA5MyA5MyAwIDAgMC0xMy4zIDQuOCA3Mi43IDcyLjcgMCAwIDAtMTMuMyA5LjkgNzggNzggMCAwIDAtMTEuMyAxMy42IDg2LjIgODYuMiAwIDAgMC03LjIgMTUuNyA4My44IDgzLjggMCAwIDAtMy4yIDE1LjkgODggODggMCAwIDAgMi4xIDE1LjUgNjAgNjAgMCAwIDAgNy4xIDEzLjQgNDMgNDMgMCAwIDAgMTEuMiA2LjUgNDQuMiA0NC4yIDAgMCAwIDExLjQtLjJjNC4zLTEuMiA4LjEtMy4zIDExLjQtNi4xLjc2LTEuMzYgMi4zLTMuNSAzLjctNS4zIDEuMy0xLjcgMi40LTMuMyAzLjQtNC44YS44LjggMCAwIDEtLjQtMS4zYy0uNS4zLTEgLjUtMS40LjctMS4xLjYtMi4zIDEuMS0zLjUgMS42LTEuOS44LTMuOSAxLjQtNS45IDEuOC0yIC40LTQgLjYtNi4xLjctMi4xLjEtNC4yIDAtNi4zLS4zLTEuMS0uMS0yLjItLjQtMy4zLS43YTQzLjQgNDMuNCAwIDAgMS0xMy40LTIuOXoiLz48cGF0aCBmaWxsPSIjRkZGOTMzIiBkPSJNNjAgMTQ5LjljLTEuMyAwLTIuNi0uMS0zLjgtLjMtMS4yLS4yLTIuNS0uNS0zLjctLjktMS4yLS40LTIuNC0uOS0zLjYtMS41LTEuMi0uNi0yLjQtMS4zLTMuNS0yLjItMS4xLS4OS0yLjEtMi0yLjktMy4zLS45LTEuMi0xLjYtMi42LTIuMi0zLjktLjYtMS40LTEuMS0yLjgtMS40LTQuMi0uMy0xLjUtLjUtMy0uNi00LjZhNTguNiA1OC42IDAgMCAxIDAtMTEuOGMwLTEuNS4xLTMuMS40LTQuNi4zLTEuNC44LTIuOSAxLjQtNC4zIDEuMi0yLjcgMy01LjEgNS40LTcuMyAyLjQtMi4yIDUtNC4xIDguMSA1YTY2LjIgNjYuMiAwIDAgMSA0My4yIDBjMy4xIDEgNS43IDIuOCA4LjEgNSAyLjQgMi4yIDQuMyA0LjYgNS40IDcuMyAxLjIgMi43IDEuOSg1LjUgMi4yIDguNS4zIDMgLjMgNi4xIDAgOS4yLS4yIDMtLjkgNS45LTIuMiA4LjVhMzEuMiAzMS4yIDAgMCAxLTUuNCA3LjRjLTEuMSAxLjItMi40IDIuNC0zLjUgNC4zYTM2LjMgMzYuMyAwIDAgMS05LjMgNi4yYy0xLjIuNC0yLjQuNy0zLjYgMS0yLjQuNC00LjguNC03LjIuMS0xLjItLjEtMi40LS4zLTMuNS0uNWEzMy42IDMzLjYgMCAwIDEtMTIuNi00LjZjLTEuMi0uNy0yLjMtMS40LTMuNC0yLjMtMS0xLTEuOC0yLjEtMi42LTMuMi0uOC0xLjItMS40LTIuNC0xLjgtMy44LS41LTEuMy0uNy0yLjgtLjctNC4zIDAtMS41LjMtMyAxIDQuMy42IDEuNCAxLjQgMi44IDIuNSA0LjFhMTguNiAxOC42IDAgMCAwIDEzLjIgOS41YzEuMi4zIDIuNC41IDMuNi42IDIuNC4zIDQuOC4zIDcuMiAwYTMxLjkgMzEuOSAwIDAgMCAxMS42LTMuM2MxLjItLjUgMi40LTEuMSAzLjUtMS44LTEuMSAxLjUtMi40IDMtMy44IDQuNS0xLjMgMS42LTIuOCAzLjEtNC4zIDQuNS0xLjYgMS40LTMuMiAyLjYtNSAzdGE0MiA0MiAwIDAgMS0xOC45IDQuMyAzOS41IDM5LjUgMCAwIDEtNi43LS43em0zMS4xLTEwMS4yYy0xLjQtLjUtMi44LTEtNC4yLTEuN2ExMDQgMTA0IDAgMCAwLTIwLjgtMTMuMWMtMi0xLTMuOC0yLjItNS42LTMuNWExMiAxMiAwIDAgMS00LjEtNC44bC0uMS0uMmMtMS4yLTEuNS0yLjItMy4yLTMtNC45YTIzLjggMjMuOCAwIDAgMS0xLjctNC44Yy0uMy0xLjctLjQtMy40LS40LTUuMiAwLTEuOC4xLTMuNS40LTUuMmExOC44IDE4LjggMCAwIDEgMS43LTQuOGMyLjItNC4zIDUuNS03LjggOS44LTkuOWwzLjQtMS44aC4xYy4zIDAgLjUgMCAuOC4xIDEuMy4zIDIuNi44IDMuOCAxLjRhMzUgMzUgMCAwIDEgMTMuMiA5LjggNDEgNDEgMCAwIDEgOC4zIDEyLjIgMzIgMzIgMCAwIDEgMCAxMy4zYy0uNCAyLjEtMSAyLjktMS4zIDMuNGwtLjYuN2MtMS4xIDEuMy0yLjMgMi41LTMuNiAzLjgtMS4yIDEuMi0yLjUgMi4zLTMuOCAzLjQtMS4zIDEuMS0yLjcgMi4xLTQuMSAzLjF6bS0uNC0xMy4xYzEuNC0xIDMuOC0yLjIgNS45LTMuN2ExMDMgMTAzIDAgMCAwIDIwLjYtMTQuOGMyLjItMi4zIDQuMS01IDUuNC04IC4zLS44LjYtMS42LjgtMi40LjMtMS42LjUtMy4yLjUtNC45IDAtMS43LS4yLTMuNC0uNS01LjEtLjItMS42LS42LTMuMi0xLjItNC43LTEuNC0zLjUtMy43LTYuNS02LjYtOC42LTIuOS0yLjItNi4yLTMuNS05LjgtNC4yLTMuNi0uNy03LjMtLjctMTEgMC0zLjYuNi03IDEuOS05LjggNC4yLTIuOCAyLjItNC45IDQuOS02LjYgOC42LTEuNiAzLjYtMi41IDcuNS0yLjUgMTEuNyAwIDQuMiAxIDguMiAyLjUgMTEuNyAxLjYgMy42IDQgNi42IDcgOC45IDIuOCAyLjIgNi4xIDMuNSA5LjggNC4xIDMuNi43IDcuMy43IDExIDB6bS00My42LTIuOGMtMS4zIDEuNy0yLjQgMy41LTMuMyA1LjRhMzIgMzIgMCAwIDAtMS43IDUuNmMtLjIgMS44LS4zIDMuNy0uMyA1LjUgMCAxLjguMSAzLjYuMyA1LjRhMjcgMjcgMCAwIDAgMS43IDUuNmMxIDIgMi4xIDMuOCA0IDUuM2ExOCAxOCAwIDAgMCAxMy42IDYuOWMzLjQuMyA2LjkuMyAxMC4zIDAgMy41LS4zIDYuOC0xLjMgOS44LTIuOWExOCAxOCAwIDAgMCA2LjktNi45YzEuNy0yLjYgMy01LjUgMy43LTguNmExOC40IDE4LjQgMCAwIDAgMC0xMS4yYy0uNi0zLjEtMS45LTYtMy43LTguNmExOC44IDE4LjggMCAwIDAtNi45LTYuOWMtMy0xLjYtNi4zLTIuNi05LjgtMi45LTMuNC0uMy02LjktLjMtMTAuMyAwLTMuNS4zLTYuOCAxLjMtOS44IDIuOXptNzMuMiAxMS43Yy0uMy0uOC0uNy0xLjYtMS4xLTIuNC0uNC0uOC0uOS0xLjUtMS40LTIuMy0xLjUtMi4yLTMuNC00LjEtNS43LTVhMzEgMzEgMCAwIDAtMjAtMy4xYy0zLjYtLjItNy4yIDAtMTAuOCAuNy0zLjYuNi03IDEuOS05LjggNC4yLTIuOCAyLjItNC45IDQuOS02LjYgOC42LTEuNiAzLjYtMi41IDcuNS0yLjUgMTEuNyAwIDQuMiAxIDguMiAyLjUgMTEuNyAxLjYgMy42IDQgNi42IDcgOC45IDIuOCAyLjIgNi4xIDMuNSA5LjggNC4xIDMuNi43IDcuMy43IDExIDAgMy41LS42IDYuOS0xLjggOSAtMy45YTE4IDE4IDAgMCAwIDYuOS02LjljMS43LTIuNiAzLTUuNSAzLjctOC42YTE4LjEgMTguMSAwIDAgMCAwLTExLjJjLS42LTMuMS0xLjktNi0zLjctOC42YTE4LjggMTguOCAwIDAgMC02LjktNi45Yy0zLTEuNi02LjMtMi42LTkuOC0yLjktMy40LS4zLTYuOS0uMy0xMC4zIDAtMy41LjMtNi44IDEuMy05LjggMi45YTE4LjEgMTguMSAwIDAgMC02LjkgNi45Yy0xLjcgMi43LTMgNS42LTMuNyA4LjdhMTggMTggMCAwIDAgMCAxMS4yYy42IDMuMSAyIDYgMy43IDguNiAxLjggMS43IDMuNyAzLjEgNS44IDQuMmEyNCAyNCAwIDAgMCAxNS4yIDUuNWMzLjQuMiA2LjggMCAxMC4yLS43IDMuNS0uNiA2LjgtMS45IDkuNi0zLjggMS40LTEgNC4xLTIuNyA1LjktNC45YTEuNiAxLjYgMCAwIDEtLjEtMS42eiIvPjxwYXRoIGZpbGw9IiNGRkY5MzMiIGQ9Ik02MCAxMjkuMmEyMyAyMyAwIDAgMS0xMS44LTMuMSAyMSAyMSAwIDAgMS04LjgtOC44IDIzIDMgMCAwIDEtMy4xLTExLjhjMC00LjIuOC04LjMgMi4zLTEyLjEgMS42LTMuOCAzLjktNy4yIDctOS45YTIxIDIxIDAgMCAxIDkuOS03IDIzIDMgMCAwIDEgMTIuMS0yLjNjNC4yIDAgOC4zLjggMTIuMSAyLjMgMi44IDEuNSA1LjIgMy43IDcgNi45YTE4LjYgMTguNiAwIDAgMSAyLjkgOC45YzIuMiA4LjEtLjEgMTYuOC01LjEgMjIuOS00LjggNi0xMiA5LjMtMjAuMSA5LjNabS0xNS0yMy40YzEuNSAyLjcgMi4zIDUuNiAyLjMgOC42IDAgMyAtLjggNi0yLjMgOC42YTEzIDEzIDAgMCAxLTYuOSA2LjljLTIuNi44LTUuNC4zLTguMS0uOC0yLjYtMS4yLTQuNy0zLjItNi01LjYtMS40LTIuNC0yLjItNS4yLTIuMi04LjEgMC0zIC44LTUuOCAyLjItOC4yIDEuNC0yLjMgMy40LTQuMiA1LjgtNWEzIDEzIDAgMCAxIDguMy0uOWMzIDAgNS45LjcgOC42IDIuMnp6TTkxLjEgMTA1LjhjMi43IDEuNSA1LjYgMi4zIDguNiAyLjNhMTMgMTMgMCAwIDAgOC42LTIuM2MyLjctMS41IDQuOC0zLjYgNi4yLTYuMiAxLjUtMi43IDIuMy01LjYgMi4zLTguNiAwLTMtLjgtNi0yLjMtOC42LTEuNC0yLjYtMy41LTQuNy02LjItNi4yLTIuNy0xLjUtNS42LTIuMy04LjYtMi4zLTEuNSAwLTIuOS4xLTQuNC40LTEuNC4zLTIuOC43LTRuMSAxLjQtMi43IDEuNC01IDMuNC02LjcgNS45LTEuNyAyLjYtMi42IDUuNS0yLjYgOC43IDAgMy4yLjkgNi4xIDIuNiA4LjcgMS43IDIuNyA0IDQuOSA2LjcgNi4zem0tNDUtNDYuOGMtMi4zIDEuMy00LjQgMy02LjIgNS0xLjggMi0zLjIgNC4zLTQuMiA2LjgtMSAxLjUtMS42IDMuMS0yIDQuOC0uMyAxLjYtLjUgMy4zLS41IDUuMSAwIDEuOC4yIDMuNS41IDUuMS4zIDEuNyAxIDMuNCAyIDQuOSAxIDIuNSAyLjQgNC44IDQuMiA2LjggMS44IDIgNCAzLjcgNi4yIDVsLjIuMmMxLjIgMS4yIDIuNSAyLjIgMy45IDMuMSAxLjQuOSAyLjkgMS43IDQuNCAyLjRhMzIgMzIgMCAwIDAgMTAuNSA0LjVjMS44LjMgMy42LjUgNS40LjVzMy42LS4yIDUuNC0uNWMzLjYtLjggNy0yLjQgOS44LTQuOWExOC44IDE4LjggMCAwIDAgNS43LTkuNGMyLjMtOC0uMS0xNi42LTUuMS0yMi41LTQuOC02LTEyLTkuMy0yMC05LjNhMzkgMzkgMCAwIDAtMjAuMiA1LjV6bS0uMS0xMy4yYzEuMyAwIDIuNS4xIDMuOC4zIDEuMi4yIDIuNC41IDMuNi45IDEuMi40IDIuMy45IDMuNCAxLjUgMS4xLjYgMi4yIDEuMyAzLjIgMi4yIDEgMSAyIDIgMi42IDMuMi43IDEuMiAxLjIgMi41IDEuNiAzLjguNCAxLjMuNiAyLjYuNiA0IDAgMS40LS4yIDIuOC0uNiA0LS40IDEuMy0xIDIuNi0xLjYgMy44LS43IDEuMy0xLjUgMi4yLTIuNiAzLjItMSAxLTEuOSAyLTIuOSAzLjJhMjIgMjIgMCAwIDEtMy4yIDIuMmMtMS4xLjYtMi4yIDEuMS0zLjQgMS41LTEuMi40LTIuNC43LTMuNi45LTEuMy4yLTIuNi4zLTMuOC4zLTMuMyAwLTYuNS0uOC05LjQtMi4zLTIuOC0xLjUtNS4yLTMuNy03LTYuOWExOC42IDE4LjYgMCAwIDEtMi45LTguOWMtLjQtMy0uNC02IDAtOC45LjUtMyAxLjYtNS44IDIuOS04LjNhMTkgMTkgMCAwIDEgNy02LjljMi44LTEuNSA1LjktMi4zIDkuNC0yLjN6bTEwMS44IDY1LjVjLTEuOS0uOC0zLjctMS43LTUuNC0yLjgtMS44LTEuMS0zLjQtMi40LTQuOC0zLjktMS41LTEuNS0yLjctMy4xLTMuOC00LjgtMS0xLjctMS44LTMuNS0yLjQtNS4zYTI3IDI3IDAgMCAxLTEuMi01LjggMzMgMzMgMCAwIDEgMC0xMS42YzMuMy0xMS42IDEzLjQtMjAgMjUuMy0yMC44YTQzLjQgNDMuNCAwIDAgMSA4LjkuMiA0MiA0MiAwIDAgMSAxNS4yIDUuN2wzLjIgMi41Yy4xLjMuMy41LjQuNmExIDEgMCAwIDEtMS4yLjhsLTEuNC0uMWMtMS4yLS4xLTIuNC0uMy0zLjYtLjUtMS4yLS4yLTIuNC0uNS0zLjYtLjgtMS4yLS4zLTIuNC0uNy0zLjYtMS4xLTEuMi0uNC0yLjQtLjktMy41LTEuNC0xLjEtLjUtMi4yLTEuMS0zLjIgMS44LTEtLjctMS45LTEuNC0yLjgtMi4zLTEtLjgtMS44LTEuOC0yLjYtMi44LS44LTEtMS40LTIuMS0yLTMuMy0uNS0xLjItMS0yLjQtMS4zLTMuNy0uMy0xLjItLjUtMi41LS42LTMuOC0uMi0xLjMtLjItMi42LS4yLTQgMC0xLjQuMS0yLjcuMi00IC4xLTEuMy4zLTIuNi42LTMuOC4zLTEuMy43LTIuNSAxLjMtMy43LjgxLTEuODIgMS44OC0zLjUgMy4xMS01LjA5YTIzLjM1IDEuMiAwIDEgMSAzMy4wMSAyNC4yNCAxLjIgMS4yIDAgMCAxLTEuNjUuM3oiLz48L3N2Zz4=" class="emblem" alt="National Emblem of India">
-      <div class="header-title">
-        Sanskriti Darpan
-        <span class="hindi">संस्कृति दर्पण</span>
-      </div>
-      <div class="header-actions">
-        <!-- Icons for language and accessibility would go here -->
+    <header class="top-nav">
+      <div class="container">
+        <div class="nav-left">
+          <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9b/Odisha_Govt_Logo.svg/1200px-Odisha_Govt_Logo.svg.png" alt="Government of Odisha Emblem" class="emblem">
+          <span class="logo-text">Sanskriti Darpan</span>
+        </div>
+        <nav class="nav-right">
+          <a href="#">Home</a>
+          <a href="about.html">About the Initiative</a>
+          <a href="#">Sites</a>
+          <a href="#">Contact Us</a>
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="#2c3e50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 21L16.65 16.65" stroke="#2c3e50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </nav>
       </div>
     </header>
 
-    <div class='container' id='container'>
-      <main class='main' id='main'>
-        <div class="title-section">
-          <h1>Sanskriti Darpan</h1>
-          <h2>The Mirror of Culture</h2>
-        </div>
-        <p class="description">
-          Sanskriti Darpan is the official Government of India platform bringing our nation's magnificent heritage to life. Using stunning Augmented Reality (AR), you can explore ancient monuments, uncover hidden stories, and experience history like never before. Test your knowledge with interactive quizzes and get instant answers from our AI guides. Journey through time with this landmark Digital India initiative from the Ministry of Culture.
-        </p>
+    <main>
+      <section class="hero-section">
+        <h1>Sanskriti Darpan: Discover Odisha's Heritage in Augmented Reality.</h1>
+        <p>An initiative by the Government of Odisha to preserve and share our timeless cultural treasures with the world.</p>
+        <a href="#featured-sites" class="cta-button">Explore Heritage Sites</a>
+      </section>
 
-        <div class="gallery-container" id="gallery-container">
-          <!-- Exhibit cards will be injected here by JavaScript -->
-        </div>
-
-      </main>
-
-      <footer class='footer'>
-        <div class="footer-content">
-          <div class="footer-logos">
-            <!-- Placeholder for Digital India and Incredible India logos -->
+      <section class="featured-sites" id="featured-sites">
+        <div class="container">
+          <h2>Explore Our Digitally Preserved Sites</h2>
+          <div class="sites-grid">
+            <a href="exhibit.html?site=jain-sculptures" class="site-card">
+              <img src="Images-frontend/Ancient Jain Sculptures – Nandapur Region, Koraput.png" alt="Ancient Jain Sculptures">
+              <div class="card-content">
+                <h3>Ancient Jain Sculptures</h3>
+                <p>Nandapur Region, Koraput</p>
+              </div>
+            </a>
+            <a href="exhibit.html?site=buddhist-relics" class="site-card">
+              <img src="Images-frontend/Buddhist Diamond Triangle - Lalitgiri, Ratnagiri, Udayagiri (Jajpur).png" alt="Buddhist Relics">
+              <div class="card-content">
+                <h3>Buddhist Relics</h3>
+                <p>Bhandaripokhari, Bhadrak</p>
+              </div>
+            </a>
+            <a href="exhibit.html?site=keonjhar-relics" class="site-card">
+              <img src="Images-frontend/Keonjhar Archaeological Relics.png" alt="Keonjhar Archaeological Relics">
+              <div class="card-content">
+                <h3>Keonjhar Archaeological Relics</h3>
+                <p>Keonjhar</p>
+              </div>
+            </a>
+            <a href="exhibit.html?site=diamond-triangle" class="site-card">
+              <img src="Images-frontend/uddhist Relics - Bhandaripokhari, Bhadrak.png" alt="Buddhist Diamond Triangle">
+              <div class="card-content">
+                <h3>Buddhist Diamond Triangle</h3>
+                <p>Lalitgiri, Ratnagiri, Udayagiri</p>
+              </div>
+            </a>
           </div>
-          <div class="footer-nav">
-            <a href="#">Home</a>
-            <a href="#">Map</a>
-            <a href="#">Scan</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-content">
+        <div class="footer-column">
+          <h4>Sanskriti Darpan</h4>
+          <p>An initiative by the Department of Tourism, Government of Odisha, to bring our state's rich heritage to a global audience through technology.</p>
+        </div>
+        <div class="footer-column">
+          <h4>Quick Links</h4>
+          <a href="about.html">About the Initiative</a>
+          <a href="#">All Heritage Sites</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Contact Us</a>
+        </div>
+        <div class="footer-column">
+          <h4>Follow Us</h4>
+          <div class="social-icons">
+            <a href="#"><img src="https://simpleicons.org/icons/x.svg" alt="X (Twitter)"></a>
+            <a href="#"><img src="https://simpleicons.org/icons/facebook.svg" alt="Facebook"></a>
+            <a href="#"><img src="https://simpleicons.org/icons/instagram.svg" alt="Instagram"></a>
+            <a href="#"><img src="https://simpleicons.org/icons/youtube.svg" alt="YouTube"></a>
           </div>
         </div>
-      </footer>
-    </div>
-
-    <script>
-      const exhibits = [
-        {
-          id: 'konark-sun-temple',
-          title: 'Konark Sun Temple',
-          description: 'A 13th-century CE sun temple at Konark about 35 kilometres northeast from Puri on the coastline of Odisha, India.',
-          imageUrl: 'https://images.unsplash.com/photo-1617364292277-a0fab5bb11a3?q=80&w=1932&auto=format&fit=crop',
-        },
-        {
-          id: 'jagannath-temple',
-          title: 'Jagannath Temple, Puri',
-          description: 'An important Hindu temple dedicated to Jagannath, a form of Vishnu, in Puri in the state of Odisha.',
-          imageUrl: 'https://images.unsplash.com/photo-1628269215524-a017502bac7a?q=80&w=2070&auto=format&fit=crop',
-        },
-        {
-          id: 'udayagiri-caves',
-          title: 'Udayagiri & Khandagiri Caves',
-          description: 'Partly natural and partly artificial caves of archaeological, historical and religious importance near the city of Bhubaneswar.',
-          imageUrl: 'https://images.unsplash.com/photo-1600691399338-359b3593ff0d?q=80&w=2070&auto=format&fit=crop',
-        },
-        {
-          id: 'dhauli-stupa',
-          title: 'Dhauli Shanti Stupa',
-          description: 'A Buddhist stupa in Dhauli, on the banks of the river Daya. It is a peace pagoda monument.',
-          imageUrl: 'https://images.unsplash.com/photo-1587899765383-b35a4d4f5592?q=80&w=2070&auto=format&fit=crop',
-        }
-      ];
-
-      const galleryContainer = document.getElementById('gallery-container');
-
-      exhibits.forEach((exhibit, index) => {
-        const card = document.createElement('div');
-        card.className = 'exhibit-card';
-        
-        // The link now goes to exhibit.html with the site's ID
-        const link = document.createElement('a');
-        link.href = `exhibit.html?site=${exhibit.id}`;
-        link.style.textDecoration = 'none';
-        link.style.color = 'inherit';
-        link.style.animationDelay = `${index * 100}ms`;
-
-        card.innerHTML = `
-          <div class="card-image" style="background-image: url('${exhibit.imageUrl}')"></div>
-          <div class="card-content">
-            <h3>${exhibit.title}</h3>
-            <p>${exhibit.description}</p>
-          </div>
-        `;
-        link.appendChild(card);
-        galleryContainer.appendChild(link);
-      });
-    </script>
+        <div class="footer-column">
+          <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9b/Odisha_Govt_Logo.svg/1200px-Odisha_Govt_Logo.svg.png" alt="Government of Odisha Emblem" class="emblem" style="height: 50px; background: white; padding: 5px; border-radius: 5px;">
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        © 2024 Government of Odisha. All Rights Reserved.
+      </div>
+    </footer>
   </body>
 </html>
